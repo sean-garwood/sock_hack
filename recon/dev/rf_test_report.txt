@@ -1,0 +1,4544 @@
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 1 of 41
+
+RF Test Report
+Project Number: 4598567
+
+Proposal Number: 10361 rev3
+
+Report Number: 4598567EMC05
+
+Revision Level: 1
+
+Client: Owlet Baby Care Inc.
+Equipment Under Test: Owlet Smart Sock Base Station V3
+Model: OBL 3.0
+FCC ID: 2AIEP-OBL3A
+IC ID: 21386-OBL3A
+Applicable Standards: FCC Part 15 Subpart C, § 15.247
+RSS-247, Issue 2, February 2017
+RSS-GEN, Issue 5, March 2019, Amendment 1
+ANSI C63.10:2013
+Report issued on: 07 July 2020
+Test Result: Compliant
+
+Prepared by:
+Martin Taylor, Project Engineer
+
+Reviewed by:
+David Schramm, Operations Manager
+
+Remarks: This report details the results of the testing carried out on one sample, the results contained in this test report do not relate to other
+samples of the same product. The manufacturer should ensure that all products in series production are in conformity with the product sample
+detailed in this report.
+This document is issued by the Company under its General Conditions of Service accessible at http://www.sgs.com/en/Terms-andConditions.aspx. Attention is drawn to the limitation of liability, indemnification and jurisdiction issues defined therein.
+Any holder of this document is advised that information contained hereon reflects the Company’s findings at the time of its intervention only and
+within the limits of Client’s instructions, if any. The Company’s sole responsibility is to its Client and this document does not exonerate parties to
+a transaction from exercising all their rights and obligations under the transaction documents. Any unauthorized alteration, forgery or falsification
+of the content or appearance of this document is unlawful and offenders may be prosecuted to the fullest extent of the law.
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 2 of 41
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 4 of 41
+
+1 Summary of Test Results
+Test Description
+Bandwidth
+
+Test Specification
+
+15.247(a)(2)
+
+Test Result
+
+RSS-247 S5.2 (a)
+RSS-GEN S6.7
+RSS-247 S5.4 (d)
+RSS-247 S5.2 (b)
+
+Compliant
+
+Output Power
+15.247(b)(3)
+Compliant
+Power Spectral Density
+15.247(e)
+Compliant
+Conducted Spurious Emissions
+15.247(d)
+RSS-247 S5.5
+Compliant
+/ Band Edge
+Emissions in Restricted
+15.247(d)
+RSS-247 S5.5
+Compliant
+Frequency Bands
+15.205, 15.209
+RSS-GEN S8.9, S8.10
+Band Edge Emissions in
+15.205, 15.209
+RSS-GEN S8.9, S8.10
+Compliant
+Restricted Frequency Bands
+Antenna Requirement
+15.203
+RSS-GEN S6.8
+Compliant (1)
+(1) Device uses an internal PCB trace inverted F antenna which cannot be replaced by the end user.
+
+1.1
+
+Modifications Required for Compliance
+
+None.
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 5 of 41
+
+2 General Information
+2.1
+
+Client Information
+Name: Owlet Baby Care Inc.
+Address: 2500 Executive Parkway Suite 500
+City, State, Zip, Country: Lehi, UT 84043, USA
+
+2.2
+
+Test Laboratory
+Name: SGS North America, Inc.
+Address: 620 Old Peachtree Road NW, Suite 100
+City, State, Zip, Country: Suwanee, GA 30024, USA
+Accrediting Body: A2LA
+Type of lab: Testing Laboratory
+Certificate Number: 3212.01
+
+2.3
+
+General Information of EUT
+Equipment Under Test:
+Model:
+Sample ID:
+Firmware Version:
+
+Owlet Smart Sock Base Station V3
+OBL 3.0
+5220
+B1.0.3-c9c4_S1.0.4-64c1_BB0.7.34_SB0.7.33_SD6.1.1
+
+FCC ID: 2AIEP-OBL3A
+IC ID: 21386-OBL3A
+Frequency Range: 2402 – 2480 MHz
+Data Modes: Bluetooth Low Energy (GFSK)
+Antenna: Internal PCB Trace Inverted F Antenna (0.77 dBi)
+Rated Voltage: 5 Vdc from AC Adapter with input rated for 100-240Vac 50-60Hz
+Test Voltage: 5 Vdc from AC Adapter powered by 120Vac 60Hz
+Sample Received Date: 02 March 2020
+Dates of testing: 31 March – 07 May 2020
+
+2.4
+
+Operating Modes and Conditions
+
+The EUT was programmed by the manufacturer to allow test mode control using a Direct Test Mode
+software application from Nordic Semiconductor. The conducted and radiated test mode samples were
+configured with 12-pin headers for radio control and were powered using USB C cables and AC Power
+Adapters supplied by the client. Low, middle and high Bluetooth LE channels were tested using the
+same modulation and bandwidth as is used in normal operation. PRBS9 packet data was used with the
+packet length set to 37 bytes, which produced the highest available duty cycle. A Power setting of 4dBm was used for all tests.
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 6 of 41
+
+2.5
+
+EUT Connection Block Diagram – Conducted Measurements
+2
+
+B
+1
+Measurement
+System
+
+coax
+
+C
+
+A (EUT)
+3
+
+2.6
+
+AC
+Mains
+
+D
+
+EUT Connection Block Diagram – Radiated Measurements
+Inside Chamber
+
+A (EUT)
+
+(not connected
+during testing)
+
+3
+D
+
+2.7
+
+1
+
+2
+
+B
+
+C
+
+AC
+Mains
+
+System Configurations
+
+Device
+Reference
+
+Manufacturer
+
+Description
+
+Model Number
+
+Serial Number
+
+A
+
+Owlet Baby Care
+Inc.
+
+Owlet Base Station (EUT)
+
+OBL 3.0
+
+Not labeled
+
+B
+
+Owlet Baby Care
+Inc.
+
+Developer Board
+
+Super Base Buddy
+v1.0
+
+Not labeled
+
+C
+
+Lenovo
+
+Laptop Computer
+
+T500
+
+L3-ABV0N 08/12
+
+D
+
+Phihong USA
+
+AC Power Adapter
+
+PSA05A-050QL6
+
+Not labeled
+
+2.8
+
+Cable List
+
+Cable
+reference
+
+Port Name
+
+Start
+
+End
+
+Cable Length
+(m)
+
+Ferrite
+installed?
+
+Shielded?
+
+1
+
+Comm.
+
+EUT
+
+Developer Board
+
+0.25
+
+N
+
+N
+
+2
+
+USB
+
+Laptop
+
+Developer Board
+
+1.45
+
+N
+
+N
+
+3
+
+DC Power
+
+EUT
+
+AC Power Adapter
+
+1.52
+
+N
+
+N
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 7 of 41
+
+3 Bandwidth
+3.1
+
+Test Result
+Test Description
+
+Test Specification
+
+DTS Bandwidth (6dB)
+
+15.247(a)(2)
+
+Occupied Bandwidth (99%)
+
+3.2
+
+Test Result
+
+RSS-247 S5.2 (a)
+
+Compliant
+
+RSS-GEN S6.7
+
+Reported
+
+Test Methods
+
+The DTS 6dB bandwidth measurements were performed using the procedure from ANSI C63.10 clause
+11.8.1, and the 99% occupied bandwidth measurements were performed using the procedure from ANSI
+C63.10 clause 6.9.3. These procedures are referenced in KDB 558074 D01 15.247 Meas Guidance
+v05r02. See section 2.5 above for test setup diagram.
+Limit
+The minimum 6dB bandwidth shall be at least 500 kHz.
+
+3.3
+
+Test Site
+
+SGS EMC Laboratory, Suwanee, GA
+Environmental Conditions
+Temperature: 22.9 °C
+Relative Humidity: 33.8 %
+Atmospheric Pressure: 98.5 kPa
+
+3.4
+
+Test Equipment
+Test End Date: 28-Apr-2020
+
+Equipment
+
+Model
+
+Tester: MT
+
+Manufacturer
+
+Asset Number Cal Due Date
+
+RF CABLE (TS8997)
+
+141
+
+Huber & Suhner
+
+B095585
+
+6-Sep-2020
+
+ATTENUATOR, 10DB (TS8997)
+
+10DB
+
+ROHDE & SCHWARZ
+
+B095591
+
+7-Sep-2020
+
+RF SWITCH (TS8997)
+
+OSP
+
+ROHDE & SCHWARZ
+
+15039
+
+23-Dec-2020
+
+POWER METER (TS8997)
+
+OSP-B157
+
+ROHDE & SCHWARZ
+
+15040
+
+26-Dec-2020
+
+SIGNAL ANALYZER (TS8997)
+
+FSV30
+
+ROHDE & SCHWARZ
+
+B085749
+
+27-Dec-2021
+
+Note: The equipment calibration period is 1 year except for the FSV which is on a 2-year cycle.
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 8 of 41
+
+3.5
+
+Test Data – DTS Bandwidth (6dB)
+Channel
+
+Frequency
+(MHz)
+
+6dB Bandwidth
+(kHz)
+
+Limit Min
+(kHz)
+
+Result
+
+0
+
+2402
+
+733
+
+500
+
+Pass
+
+19
+
+2440
+
+752
+
+500
+
+Pass
+
+39
+
+2480
+
+733
+
+500
+
+Pass
+
+30
+
+Level in dBm
+
+20
+
+10
+
+0
+
+7 3 2 .6 7 4 k H z
+
+-1 0
+
+2401
+
+2 4 0 1 .5
+
+2402
+
+2 4 0 2 .5
+
+2403
+
+2 4 4 0 .5
+
+2441
+
+2 4 8 0 .5
+
+2481
+
+F re q u e n c y in M H z
+
+30
+
+Level in dBm
+
+20
+
+10
+
+0
+7 5 2 .4 7 6 k H z
+
+-1 0
+
+2439
+
+2 4 3 9 .5
+
+2440
+F re q u e n c y in M H z
+
+30
+
+Level in dBm
+
+20
+
+10
+
+0
+
+-1 0
+
+2479
+
+7 3 2 .6 7 4 k H z
+
+2 4 7 9 .5
+
+2480
+F re q u e n c y in M H z
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 9 of 41
+
+3.6
+
+Test Data – 99% Occupied Bandwidth
+Channel
+
+Frequency
+(MHz)
+
+99% Bandwidth
+(kHz)
+
+Result
+
+0
+
+2402
+
+1050
+
+Reported
+
+19
+
+2440
+
+1055
+
+Reported
+
+39
+
+2480
+
+1060
+
+Reported
+
+15
+
+Level in dBm
+
+10
+
+0
+
+-1 0
+
+-2 0
+1 .0 5 0 M H z
+-3 0
+2401
+
+2 4 0 1 .5
+
+2402
+
+2 4 0 2 .5
+
+2403
+
+2 4 4 0 .5
+
+2441
+
+2 4 8 0 .5
+
+2481
+
+F re q u e n c y in M H z
+
+15
+
+Level in dBm
+
+10
+
+0
+
+-1 0
+
+-2 0
+1 .0 5 5 M H z
+-3 0
+2439
+
+2 4 3 9 .5
+
+2440
+F re q u e n c y in M H z
+
+15
+
+Level in dBm
+
+10
+
+0
+
+-1 0
+
+-2 0
+1 .0 6 0 M H z
+-3 0
+2479
+
+2 4 7 9 .5
+
+2480
+F re q u e n c y in M H z
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 10 of 41
+
+4 Output Power
+4.1
+
+Test Result
+Test Description
+Fundamental Emission
+Output Power
+
+4.2
+
+Test Specification
+15.247(b)(3)
+
+Test Result
+
+RSS-247 S5.4 (d)
+
+Compliant
+
+Test Method
+
+Fundamental maximum conducted (average) output power measurements were performed using the
+method described in ANSI C63.10:2013 clause 11.9.2.3.2. This method uses a wideband gated RF
+power meter with gate parameters adjusted such that the power is measured only when the EUT is
+transmitting at its maximum power control level. Because the measurement is made only during the ON
+time of the transmitter, no duty cycle correction factor is required. This procedure is referenced in KDB
+558074 D01 15.247 Meas Guidance v05r02. See section 2.5 above for test setup diagram.
+Limit
+For systems using digital modulation in the 902-928 MHz, 2400-2483.5 MHz, and 5725-5850 MHz
+bands: 1 Watt. For using antennas with greater than 6dBi of gain, the limit is reduced in dB by the
+amount the gain exceeds 6dBi (e.g. for a 7.4dBi antenna, the limit is reduced from 30dBm to 28.6dBm).
+Also, the e.i.r.p. shall not exceed 4 Watts (36 dBm) based on RSS-247 S5.4 (d).
+
+4.3
+
+Test Site
+
+SGS EMC Laboratory, Suwanee, GA
+Environmental Conditions
+Temperature: 22.9 °C
+Relative Humidity: 33.8 %
+Atmospheric Pressure: 98.5 kPa
+
+4.4
+
+Test Equipment
+Test End Date: 28-Apr-2020
+
+Tester: MT
+
+Equipment
+
+Model
+
+Manufacturer
+
+Asset Number Cal Due Date
+
+RF CABLE (TS8997)
+
+141
+
+Huber & Suhner
+
+B095585
+
+ATTENUATOR, 10DB (TS8997)
+
+10DB
+
+ROHDE & SCHWARZ
+
+B095591
+
+7-Sep-2020
+
+RF SWITCH (TS8997)
+
+OSP
+
+ROHDE & SCHWARZ
+
+15039
+
+23-Dec-2020
+
+POWER METER (TS8997)
+
+OSP-B157
+
+ROHDE & SCHWARZ
+
+15040
+
+26-Dec-2020
+
+SIGNAL ANALYZER (TS8997)
+
+FSV30
+
+ROHDE & SCHWARZ
+
+B085749
+
+27-Dec-2021
+
+6-Sep-2020
+
+Note: The equipment calibration period is 1 year except for the FSV which is on a 2-year cycle.
+
+4.5
+
+Test Data
+
+Channel
+
+Frequency
+(MHz)
+
+RMS Power
+(dBm)
+
+Limit Max
+(dBm)
+
+EIRP
+(dBm)
+
+Limit Max
+(dBm)
+
+Result
+
+0
+
+2402
+
+18.2
+
+30
+
+19.0
+
+36
+
+Pass
+
+19
+
+2440
+
+17.8
+
+30
+
+18.5
+
+36
+
+Pass
+
+39
+
+2480
+
+16.8
+
+30
+
+17.5
+
+36
+
+Pass
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 11 of 41
+
+5 Power Spectral Density
+5.1
+
+Test Result
+Test Description
+
+Test Specification
+
+Power Spectral Density
+
+5.2
+
+15.247(e)
+
+Test Result
+
+RSS-247 S5.2 (b)
+
+Compliant
+
+Test Method
+
+Power spectral density measurements were performed using the procedures from ANSI C63.10: 2013
+clause 11.10. These procedures are referenced in KDB 558074 D01 15.247 Meas Guidance v05r02.
+See section 2.5 above for test setup diagram.
+Limit
+The maximum limit is 8 dBm / 3 kHz.
+
+5.3
+
+Test Site
+
+SGS EMC Laboratory, Suwanee, GA
+Environmental Conditions
+Temperature: 22.9 °C
+Relative Humidity: 33.8 %
+Atmospheric Pressure: 98.5 kPa
+
+5.4
+
+Test Equipment
+Test End Date: 28-Apr-2020
+
+Tester: MT
+
+Equipment
+
+Model
+
+Manufacturer
+
+Asset Number Cal Due Date
+
+RF CABLE (TS8997)
+
+141
+
+Huber & Suhner
+
+B095585
+
+ATTENUATOR, 10DB (TS8997)
+
+10DB
+
+ROHDE & SCHWARZ
+
+B095591
+
+7-Sep-2020
+
+RF SWITCH (TS8997)
+
+OSP
+
+ROHDE & SCHWARZ
+
+15039
+
+23-Dec-2020
+
+POWER METER (TS8997)
+
+OSP-B157
+
+ROHDE & SCHWARZ
+
+15040
+
+26-Dec-2020
+
+SIGNAL ANALYZER (TS8997)
+
+FSV30
+
+ROHDE & SCHWARZ
+
+B085749
+
+27-Dec-2021
+
+6-Sep-2020
+
+Note: The equipment calibration period is 1 year except for the FSV which is on a 2-year cycle.
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 12 of 41
+
+5.5
+
+Test Data
+Channel
+
+Frequency
+(MHz)
+
+PSD
+(dBm/3kHz)
+
+Limit Max
+(dBm/3kHz)
+
+Result
+
+0
+
+2402
+
+7.9
+
+8
+
+Pass
+
+19
+
+2440
+
+7.5
+
+8
+
+Pass
+
+39
+
+2480
+
+6.3
+
+8
+
+Pass
+
+15
+
+Level in dBm
+
+10
+0
+-1 0
+-2 0
+-3 0
+2 4 0 1 .2 5 2 4 0 1 .4
+
+2 4 0 1 .6
+
+2 4 0 1 .8
+
+2402
+
+2 4 0 2 .2
+
+2 4 0 2 .4
+
+2 4 0 2 .6 2 4 0 2 .7 5
+
+2 4 4 0 .4
+
+2 4 4 0 .6 2 4 4 0 .7 5
+
+2 4 8 0 .4
+
+2 4 8 0 .6 2 4 8 0 .7 5
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+F re q u e n c y in M H z
+L imit
+
+Sum Lev el
+
+PS D
+
+15
+
+Level in dBm
+
+10
+0
+-1 0
+-2 0
+-3 0
+2 4 3 9 .2 5 2 4 3 9 .4
+
+2 4 3 9 .6
+
+2 4 3 9 .8
+
+2440
+
+2 4 4 0 .2
+
+F re q u e n c y in M H z
+L imit
+
+Sum Lev el
+
+PS D
+
+10
+
+Level in dBm
+
+0
+-1 0
+-2 0
+-3 0
+
+2 4 7 9 .2 5 2 4 7 9 .4
+
+2 4 7 9 .6
+
+2 4 7 9 .8
+
+2480
+
+2 4 8 0 .2
+
+F re q u e n c y in M H z
+L imit
+
+SGS North America Inc.
+
+Consumer and Retail
+
+Sum Lev el
+
+PS D
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 13 of 41
+
+6 Conducted Spurious Emissions / Band Edge
+6.1
+
+Test Result
+Test Description
+Conducted Spurious and
+Band Edge Emissions
+
+6.2
+
+Test Specification
+15.247(d)
+
+Test Result
+
+RSS-247 S5.5
+
+Compliant
+
+Test Method
+
+Conducted band edge and spurious band emissions in non-restricted frequency bands were measured
+using the method defined in ANSI C63.10 clause 11.11. This procedure is referenced in KDB 558074
+D01 15.247 Meas Guidance v05r02. See section 2.5 above for test setup diagram.
+Limit
+Because the maximum conducted average output power was used to determine compliance with the
+output power limits, the limit in any 100 kHz band outside of the authorized band is 30 dB below the
+maximum in-band peak level.
+
+6.3
+
+Test Site
+
+SGS EMC Laboratory, Suwanee, GA
+Environmental Conditions
+
+Band Edge
+Emissions
+Temperature: 22.9 °C
+Relative Humidity: 33.8 %
+Atmospheric Pressure: 98.5 kPa
+
+6.4
+
+Conducted Spurious
+Emissions
+24.1 °C
+45.4 %
+97.2 kPa
+
+Test Equipment
+
+Band Edge Emissions
+Test End Date: 28-Apr-2020
+
+Equipment
+
+Model
+
+Tester: MT
+
+Manufacturer
+
+Asset Number Cal Due Date
+
+RF CABLE (TS8997)
+
+141
+
+Huber & Suhner
+
+B095585
+
+6-Sep-2020
+
+ATTENUATOR, 10DB (TS8997)
+
+10DB
+
+ROHDE & SCHWARZ
+
+B095591
+
+7-Sep-2020
+
+RF SWITCH (TS8997)
+
+OSP
+
+ROHDE & SCHWARZ
+
+15039
+
+23-Dec-2020
+
+POWER METER (TS8997)
+
+OSP-B157
+
+ROHDE & SCHWARZ
+
+15040
+
+26-Dec-2020
+
+SIGNAL ANALYZER (TS8997)
+
+FSV30
+
+ROHDE & SCHWARZ
+
+B085749
+
+27-Dec-2021
+
+Note: The equipment calibration period is 1 year except for the FSV which is on a 2-year cycle.
+Conducted Spurious Emissions
+Test End Date: 29-Apr-2020
+
+Tester: MT
+
+Equipment
+
+Model
+
+Manufacturer
+
+ATTENUATOR, 10DB
+
+BW-S10W2
+
+Mini-Circuits
+
+ATTENUATOR, 10DB
+
+BW-S10W2
+
+EMI TEST RECEIVER
+
+ESU40
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+Asset Number Cal Due Date
+15032
+
+14-Sep-2020
+
+Mini-Circuits
+
+15033
+
+14-Sep-2020
+
+ROHDE & SCHWARZ
+
+B079629
+
+6-Apr-2021
+
+t (770) 570-1800
+
+www.sgs.com
+
+Note: The equipment calibration period is 1 year.
+
+SGS North America Inc.
+
+Consumer and Retail
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 14 of 41
+
+6.5
+
+Test Data – DTS Band Edge
+BLE - Lower band edge
+20
+
+Level in dBm
+
+10
+0
+-1 0
+-2 0
+-3 0
+-4 0
+-5 0
+2 3 1 02 3 2 0
+
+2340
+
+2360
+
+2380
+
+2400
+
+2420
+
+2440
+
+2460
+
+2 4 8 3 .5
+
+F re q u e n c y in M H z
+L imit
+
+Sum Lev el
+
+F a il
+
+BLE - Upper band edge
+20
+
+Level in dBm
+
+10
+0
+-1 0
+-2 0
+-3 0
+-4 0
+-5 0
+2400
+
+2420
+
+2440
+
+2460
+
+2480
+
+2500
+
+F re q u e n c y in M H z
+L imit
+
+SGS North America Inc.
+
+Sum Lev el
+
+Consumer and Retail
+
+F a il
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 15 of 41
+
+6.6
+
+Test Data – DTS Conducted Spurious Emissions
+Conducted Spurs – BLE Channel 0
+2402 M Hz
+Conducte d Spurious Emissions
+20
+10
+0
+
+Amplitude dBm
+
+-10
+-20
+-30
+-40
+-50
+-60
+-70
+30M
+
+100M
+
+1G
+
+10G
+
+26G
+
+Fre que ncy
+
+Conducted Spurs – BLE Channel 19
+2440 M Hz
+Conducte d Spurious Emissions
+20
+10
+0
+
+Amplitude dBm
+
+-10
+-20
+-30
+-40
+-50
+-60
+-70
+30M
+
+100M
+
+1G
+
+10G
+
+26G
+
+Fre que ncy
+
+Conducted Spurs – BLE Channel 39
+2480 M Hz
+Conducte d Spurious Emissions
+20
+10
+0
+
+Amplitude dBm
+
+-10
+-20
+-30
+-40
+-50
+-60
+-70
+30M
+
+100M
+
+1G
+
+10G
+
+26G
+
+Fre que ncy
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 16 of 41
+
+7 Emissions in Restricted Frequency Bands
+7.1
+
+Test Result
+Test Description
+Emissions in Restricted
+Frequency Bands
+
+7.2
+
+Test Specification
+15.247(d)
+RSS-247 S5.5
+15.205, 15.209
+RSS-GEN S8.9, S8.10
+
+Test Result
+
+Compliant
+
+Test Method
+
+Radiated emissions in restricted frequency bands were measured using methods defined in ANSI
+C63.10 clause 11.12. These procedures are referenced in KDB 558074 D01 15.247 Meas Guidance
+v05r02.
+Lowest, middle and highest channels were investigated – the device was commanded to continuously
+transmit on channels 0, 19 and 39.
+Below are the test setup diagrams used in this testing.
+
+Test distances for radiated tests:
+9k to 30 MHz – Near field prescan to determine if there were any emissions
+30 to 1000 MHz - The EUT to measurement antenna distance was 3 meters
+1 to 18 GHz - The EUT to measurement antenna distance was 3 meters
+18 to 26 GHz - The EUT to measurement antenna distance was 3 meters
+Limits within restricted bands of operation:
+Limits(1)
+
+Frequency
+
+Peak Limits
+
+dBuV/m
+dBuV/m
+Microvolts/m
+30 - 88 MHz
+100
+40 (2)
+-88 - 216 MHz
+150
+43.5 (2)
+-(2)
+216 - 960 MHz
+200
+46
+-960 - 1000 MHz
+500
+54 (2)
+-1 - 40 GHz
+500
+54 (3)
+74
+(1) These limits are applicable to emissions outside of the intentional transmit frequency band.
+(2) Quasi-peak limit
+(3) Average limit
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 17 of 41
+
+7.3
+
+Test Site
+
+10m Absorber Lined Shielded Enclosure (ALSE), Suwanee, GA
+Environmental Conditions
+Temperature:
+Relative Humidity:
+Atmospheric Pressure:
+
+7.4
+
+30-1000MHz
+22.1 °C
+38.5 %
+98.0 kPa
+
+1-3GHz
+22.9 °C
+36.1 %
+98.5 kPa
+
+3-18GHz
+24.2 °C
+39.9 %
+97.1 kPa
+
+18-26GHz
+23.8 °C
+40.9 %
+97.2 kPa
+
+Test Equipment
+
+30-1000MHz
+Test End Date: 31-Mar-2020
+
+Equipment
+
+Model
+
+Tester: MT
+
+Manufacturer
+
+Asset Number Cal Due Date
+
+ANTENNA, BILOG
+
+JB6
+
+SUNOL
+
+B079690
+
+11-Dec-2020
+
+RF Cable Nm to Nm, 0.01-18GHz
+
+90-195-276
+
+TELEDYNE STORM MICROWAVE
+
+20113
+
+2-Mar-2021
+
+RF CABLE
+
+SF106
+
+HUBER & SUHNER
+
+B079713
+
+7-Sep-2020
+
+RF Cable Nm to Nm, 0.01-18GHz
+
+90-195-118
+
+TELEDYNE STORM MICROWAVE
+
+20125
+
+2-Mar-2021
+
+RF CABLE
+
+SUCOFLEX 100
+
+Huber & Suhner
+
+B108523
+
+5-Sep-2020
+
+LOW NOISE AMPLIFIER
+
+TS-PR18
+
+ROHDE & SCHWARZ
+
+15003
+
+6-Mar-2021
+
+EMI TEST RECEIVER
+
+ESU8
+
+ROHDE & SCHWARZ
+
+B085759
+
+7-May-2021
+
+Note: The equipment calibration period is 1 year.
+1-18GHz
+Test End Date: 28-Apr-2020
+
+Tester: ZH
+
+Equipment
+
+Model
+
+Manufacturer
+
+ANTENNA, DRG HORN (MEDIUM)
+
+3117
+
+ETS Lindgren
+
+Asset Number Cal Due Date
+B079691
+
+10-Aug-2020
+
+RF Cable Nm to Nm, 0.01-18GHz
+
+90-195-276
+
+TELEDYNE STORM MICROWAVE
+
+20113
+
+2-Mar-2021
+
+RF CABLE
+
+104PE
+
+HUBER & SUHNER
+
+B079793
+
+5-Sep-2020
+
+LOW NOISE AMPLIFIER
+
+TS-PR18
+
+ROHDE & SCHWARZ
+
+B094463
+
+3-Dec-2020
+
+EMI TEST RECEIVER
+
+ESW44
+
+ROHDE & SCHWARZ
+
+101585
+
+3-Dec-2020
+
+Note: The equipment calibration period is 1 year.
+18-26GHz
+Test End Date: 24-Apr-2020
+
+Tester: MT
+
+Equipment
+
+Model
+
+Manufacturer
+
+Asset Number Cal Due Date
+
+ANTENNA, HORN (SMALL)
+
+LB-180400-20-C-KF
+
+A-INFO
+
+15007
+
+6-Apr-2022
+
+RF Cable SMA to SMA, 0.0140GHz
+
+084-0505-059
+
+TELEDYNE STORM MICROWAVE
+
+20108
+
+6-Mar-2021
+
+RF Cable SMA to SMA, 0.0140GHz
+
+084-0505-138
+
+TELEDYNE STORM MICROWAVE
+
+20111
+
+6-Mar-2021
+
+RF CABLE
+
+SF102
+
+Huber & Suhner
+
+B079823
+
+17-Jul-2020
+
+EMI TEST RECEIVER
+
+ESW44
+
+ROHDE & SCHWARZ
+
+101585
+
+3-Dec-2020
+
+LOW NOISE AMPLIFIER
+
+NSP1840-HG
+
+MITEQ
+
+B087572
+
+7-Oct-2020
+
+t (770) 570-1800
+
+www.sgs.com
+
+Note: The equipment calibration period is 1 year.
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 18 of 41
+
+7.5
+
+Test Data – Radiated Emissions
+
+No emissions were detected in the 9kHz to 30MHz frequency range.
+BLE Channel 0
+Vertical Plot (30-1000MHz)
+Limit
+Vertical Peak Emissions
+Vertical Final QP measurement
+RB Avg Limit
+
+Radiated Spurious Emissions
+Vertical
+70.0
+
+60.0
+
+Amplitude dBuV/m
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+
+10.0
+
+0
+30.0M
+
+1.0G
+
+100.0M
+Frequency
+
+Vertical Data (30-1000MHz)
+Frequency
+MHz
+30.61
+58.88
+70.28
+97.11
+875.09
+958.56
+
+Raw QP
+(dBuV)
+25.6
+41.9
+42.6
+42.6
+30.4
+25.6
+
+Polarity
+(V/H)
+V
+V
+V
+V
+V
+V
+
+Azimuth
+(degrees)
+313.0
+91.0
+135.0
+178.0
+206.0
+236.0
+
+Height
+(cm)
+131.0
+132.0
+142.0
+250.0
+175.0
+250.0
+
+AF
+(dB/m)
+21.7
+7.3
+8.2
+9.5
+22.7
+23.4
+
+Loss
+(dB)
+0.5
+0.8
+0.9
+1.1
+3.2
+3.4
+
+Amp
+(dB)
+29.1
+34.1
+34.4
+35.0
+35.0
+35.0
+
+QP Value
+(dBuV/m)
+18.7
+15.9
+17.3
+18.2
+21.3
+17.4
+
+Limit
+(dBuV/m)
+40.0
+40.0
+40.0
+43.5
+46.0
+46.0
+
+Margin
+(dB)
+-21.3
+-24.1
+-22.7
+-25.3
+-24.7
+-28.6
+
+QP Value = Level + AF + CL - Amp
+Margin = QP Value - Limit
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 19 of 41
+BLE Channel 0
+Horizontal Plot (30-1000MHz)
+Limit
+Horizontal Peak Emissions
+Horizontal Final QP measurement
+RB Avg Limit
+
+Radiated Spurious Emissions
+Horizontal
+70.0
+
+60.0
+
+Amplitude dBuV/m
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+
+10.0
+
+0
+30.0M
+
+100.0M
+
+1.0G
+Frequency
+
+Horizontal Data (30-1000MHz)
+Frequency
+MHz
+30.06
+97.11
+706.95
+828.81
+875.08
+948.44
+
+Raw QP
+(dBuV)
+25.1
+47.0
+35.0
+27.3
+36.4
+25.4
+
+Polarity
+(V/H)
+H
+H
+H
+H
+H
+H
+
+Azimuth
+(degrees)
+52.0
+213.0
+352.0
+355.0
+293.0
+0.0
+
+Height
+(cm)
+103.0
+203.0
+130.0
+111.0
+194.0
+124.0
+
+AF
+(dB/m)
+22.1
+9.5
+20.7
+22.3
+22.7
+23.2
+
+Loss
+(dB)
+0.5
+1.1
+2.8
+3.1
+3.2
+3.3
+
+Amp
+(dB)
+29.0
+35.0
+35.0
+35.0
+35.0
+35.0
+
+QP Value
+(dBuV/m)
+18.8
+22.5
+23.6
+17.7
+27.3
+17.0
+
+Limit
+(dBuV/m)
+40.0
+43.5
+46.0
+46.0
+46.0
+46.0
+
+Margin
+(dB)
+-21.2
+-21.0
+-22.5
+-28.3
+-18.8
+-29.0
+
+QP Value = Level + AF + CL - Amp
+Margin = QP Value - Limit
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 20 of 41
+BLE Channel 19
+Vertical Plot (30-1000MHz)
+Limit
+Vertical Peak Emissions
+Vertical Final QP measurement
+RB Avg Limit
+
+Radiated Spurious Emissions
+Vertical
+70.0
+
+60.0
+
+Amplitude dBuV/m
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+
+10.0
+
+0
+30.0M
+
+100.0M
+
+1.0G
+Frequency
+
+Vertical Data (30-1000MHz)
+Frequency
+MHz
+30.10
+36.92
+69.46
+875.14
+908.41
+938.19
+
+Raw QP
+(dBuV)
+25.2
+31.4
+40.8
+26.5
+29.8
+25.4
+
+Polarity
+(V/H)
+V
+V
+V
+V
+V
+V
+
+Azimuth
+(degrees)
+288.0
+134.0
+314.0
+197.0
+165.0
+27.0
+
+Height
+(cm)
+175.0
+230.0
+250.0
+250.0
+250.0
+175.0
+
+AF
+(dB/m)
+22.1
+16.8
+8.1
+22.7
+22.8
+23.3
+
+Loss
+(dB)
+0.5
+0.6
+0.9
+3.2
+3.2
+3.3
+
+Amp
+(dB)
+29.0
+30.7
+34.4
+35.0
+35.0
+35.0
+
+QP Value
+(dBuV/m)
+18.9
+18.1
+15.5
+17.4
+20.9
+17.0
+
+Limit
+(dBuV/m)
+40.0
+40.0
+40.0
+46.0
+46.0
+46.0
+
+Margin
+(dB)
+-21.1
+-21.9
+-24.5
+-28.6
+-25.1
+-29.0
+
+QP Value = Level + AF + CL - Amp
+Margin = QP Value - Limit
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 21 of 41
+BLE Channel 19
+Horizontal Plot (30-1000MHz)
+Limit
+Horizontal Peak Emissions
+Horizontal Final QP measurement
+RB Avg Limit
+
+Radiated Spurious Emissions
+Horizontal
+70.0
+
+60.0
+
+Amplitude dBuV/m
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+
+10.0
+
+0
+30.0M
+
+100.0M
+
+1.0G
+Frequency
+
+Horizontal Data (30-1000MHz)
+Frequency
+MHz
+30.04
+121.86
+576.16
+875.09
+908.37
+920.48
+
+Raw QP
+(dBuV)
+25.1
+37.5
+35.0
+36.6
+29.1
+25.4
+
+Polarity
+(V/H)
+H
+H
+H
+H
+H
+H
+
+Azimuth
+(degrees)
+190.0
+175.0
+7.0
+30.0
+292.0
+246.0
+
+Height
+(cm)
+186.0
+100.0
+165.0
+194.0
+208.0
+240.0
+
+AF
+(dB/m)
+22.2
+13.8
+19.4
+22.7
+22.8
+23.2
+
+Loss
+(dB)
+0.5
+1.2
+2.6
+3.2
+3.2
+3.3
+
+Amp
+(dB)
+29.0
+35.1
+35.0
+35.0
+35.0
+35.0
+
+QP Value
+(dBuV/m)
+18.8
+17.3
+22.0
+27.5
+20.2
+16.9
+
+Limit
+(dBuV/m)
+40.0
+43.5
+46.0
+46.0
+46.0
+46.0
+
+Margin
+(dB)
+-21.2
+-26.2
+-24.0
+-18.5
+-25.8
+-29.1
+
+QP Value = Level + AF + CL - Amp
+Margin = QP Value - Limit
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 22 of 41
+BLE Channel 39
+Vertical Plot (30-1000MHz)
+Limit
+Vertical Peak Emissions
+Vertical Final QP measurement
+RB Avg Limit
+
+Radiated Spurious Emissions
+Vertical
+70.0
+
+60.0
+
+Amplitude dBuV/m
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+
+10.0
+
+0
+30.0M
+
+100.0M
+
+1.0G
+Frequency
+
+Vertical Data (30-1000MHz)
+Frequency
+MHz
+30.90
+71.15
+97.11
+820.77
+867.19
+920.83
+
+Raw QP
+(dBuV)
+25.4
+39.4
+42.3
+25.4
+25.4
+25.4
+
+Polarity
+(V/H)
+V
+V
+V
+V
+V
+V
+
+Azimuth
+(degrees)
+298.0
+307.0
+166.0
+335.0
+252.0
+96.0
+
+Height
+(cm)
+216.0
+237.0
+250.0
+176.0
+250.0
+250.0
+
+AF
+(dB/m)
+21.4
+8.2
+9.5
+22.3
+22.7
+23.2
+
+Loss
+(dB)
+0.5
+0.9
+1.1
+3.1
+3.2
+3.3
+
+Amp
+(dB)
+29.2
+34.4
+35.0
+35.0
+35.0
+35.0
+
+QP Value
+(dBuV/m)
+18.1
+14.1
+17.9
+15.7
+16.2
+16.9
+
+Limit
+(dBuV/m)
+40.0
+40.0
+43.5
+46.0
+46.0
+46.0
+
+Margin
+(dB)
+-21.9
+-25.9
+-25.7
+-30.3
+-29.8
+-29.1
+
+QP Value = Level + AF + CL - Amp
+Margin = QP Value - Limit
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 23 of 41
+BLE Channel 39
+Horizontal Plot (30-1000MHz)
+Limit
+Horizontal Peak Emissions
+Horizontal Final QP measurement
+RB Avg Limit
+
+Radiated Spurious Emissions
+Horizontal
+70.0
+
+60.0
+
+Amplitude dBuV/m
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+
+10.0
+
+0
+30.0M
+
+100.0M
+
+1.0G
+Frequency
+
+Horizontal Data (30-1000MHz)
+Frequency
+MHz
+31.57
+121.89
+574.85
+576.06
+875.10
+914.68
+
+Raw QP
+(dBuV)
+25.5
+30.3
+36.0
+35.3
+35.8
+25.4
+
+Polarity
+(V/H)
+H
+H
+H
+H
+H
+H
+
+Azimuth
+(degrees)
+320.0
+352.0
+326.0
+1.0
+328.0
+250.0
+
+Height
+(cm)
+145.0
+169.0
+167.0
+173.0
+222.0
+164.0
+
+AF
+(dB/m)
+20.9
+13.8
+19.5
+19.4
+22.7
+23.1
+
+Loss
+(dB)
+0.6
+1.2
+2.6
+2.6
+3.2
+3.3
+
+Amp
+(dB)
+29.4
+35.1
+35.0
+35.0
+35.0
+35.0
+
+QP Value
+(dBuV/m)
+17.6
+10.1
+23.1
+22.3
+26.7
+16.8
+
+Limit
+(dBuV/m)
+40.0
+43.5
+46.0
+46.0
+46.0
+46.0
+
+Margin
+(dB)
+-22.4
+-33.4
+-22.9
+-23.7
+-19.3
+-29.2
+
+QP Value = Level + AF + CL - Amp
+Margin = QP Value - Limit
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 24 of 41
+BLE Channel 0
+Vertical Plot (1-3GHz)
+Radiated Spurious Emissions
+Vertical
+120.0
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+RB Avg Limit
+RB Peak Limit
+
+110.0
+
+Amplitude dBuV/m
+
+100.0
+90.0
+80.0
+70.0
+60.0
+50.0
+40.0
+30.0
+20.0
+1.00G
+
+3.00G
+Frequency
+
+No spurious emissions observed
+
+BLE Channel 0
+Horizontal Plot (1-3GHz)
+Radiated Spurious Emissions
+Horizontal
+120.0
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+RB Avg Limit
+RB Peak Limit
+
+110.0
+
+Amplitude dBuV/m
+
+100.0
+90.0
+80.0
+70.0
+60.0
+50.0
+40.0
+30.0
+20.0
+1.00G
+
+3.00G
+Frequency
+
+No spurious emissions observed
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 25 of 41
+BLE Channel 19
+Vertical Plot (1-3GHz)
+Radiated Spurious Emissions
+Vertical
+120.0
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+RB Avg Limit
+RB Peak Limit
+
+110.0
+
+Amplitude dBuV/m
+
+100.0
+90.0
+80.0
+70.0
+60.0
+50.0
+40.0
+30.0
+20.0
+1.00G
+
+3.00G
+Frequency
+
+No spurious emissions observed
+
+BLE Channel 19
+Horizontal Plot (1-3GHz)
+Radiated Spurious Emissions
+Horizontal
+120.0
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+RB Avg Limit
+RB Peak Limit
+
+110.0
+
+Amplitude dBuV/m
+
+100.0
+90.0
+80.0
+70.0
+60.0
+50.0
+40.0
+30.0
+20.0
+1.00G
+
+3.00G
+Frequency
+
+No spurious emissions observed
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 26 of 41
+BLE Channel 39
+Vertical Plot (1-3GHz)
+Radiated Spurious Emissions
+Vertical
+120.0
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+RB Avg Limit
+RB Peak Limit
+
+110.0
+
+Amplitude dBuV/m
+
+100.0
+90.0
+80.0
+70.0
+60.0
+50.0
+40.0
+30.0
+20.0
+1.00G
+
+3.00G
+Frequency
+
+No spurious emissions observed
+
+BLE Channel 39
+Horizontal Plot (1-3GHz)
+Radiated Spurious Emissions
+Horizontal
+120.0
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+RB Avg Limit
+RB Peak Limit
+
+110.0
+
+Amplitude dBuV/m
+
+100.0
+90.0
+80.0
+70.0
+60.0
+50.0
+40.0
+30.0
+20.0
+1.00G
+
+3.00G
+Frequency
+
+No spurious emissions observed
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 27 of 41
+BLE Channel 0
+Vertical Plot (3-18GHz)
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Pk Limit
+
+Radiated Spurious Emissions
+Vertical
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+3.00G
+
+10.00G
+
+18.00G
+
+Frequency
+
+Frequency Raw Avg Polarity
+MHz
+dBuV
+(V/H)
+4803.68
+37.9
+V
+7206.16
+39.3
+V
+9609.20
+32.3
+V
+12011.16
+35.7
+V
+16815.92
+35.0
+V
+
+Vertical Data (3-18GHz)
+Average Data
+Azimuth Height
+AF
+Loss Amp
+(degrees) (cm) (dB/m) (dB) (dB)
+290.0
+250.0
+35.4
+3.6 34.8
+111.0
+250.0
+35.4
+4.6 35.4
+72.0
+250.0
+36.6
+5.2 35.4
+121.0
+250.0
+38.7
+5.9 35.9
+272.0
+245.0
+41.8
+7.0 36.9
+
+Final Avg
+dBuV/m
+42.1
+43.9
+38.8
+44.4
+46.9
+
+Limit
+(dBuV/m)
+54.0
+54.0
+54.0
+54.0
+54.0
+
+Margin
+(dB)
+-11.9
+-10.0
+-15.2
+-9.6
+-7.1
+
+Frequency
+MHz
+4803.68
+7206.16
+9609.20
+12011.16
+16815.92
+
+Peak Data
+Azimuth Height
+AF Loss Amp
+(degrees) (cm) (dB/m) (dB) (dB)
+290.0
+250.0 35.4
+3.6 34.8
+111.0
+250.0 35.4
+4.6 35.4
+72.0
+250.0 36.6
+5.2 35.4
+121.0
+250.0 38.7
+5.9 35.9
+272.0
+245.0 41.8
+7.0 36.9
+
+Final Pk
+dBuV/m
+51.6
+54.1
+51.6
+56.7
+60.3
+
+Limit
+dBuV/m
+74.0
+74.0
+74.0
+74.0
+74.0
+
+Margin
+dB
+-22.4
+-19.9
+-22.4
+-17.3
+-13.7
+
+SGS North America Inc.
+
+Raw Pk
+dBuV
+47.5
+49.5
+45.1
+48.0
+48.4
+
+Polarity
+(V/H)
+V
+V
+V
+V
+V
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 28 of 41
+BLE Channel 0
+Horizontal Plot (3-18GHz)
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Pk Limit
+
+Radiated Spurious Emissions
+Horizontal
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+3.00G
+
+10.00G
+
+18.00G
+
+Frequency
+
+Horizontal Data (3-18 GHz)
+Average Data
+
+Frequency Raw Avg Polarity
+MHz
+dBuV
+(V/H)
+4804.36
+38.7
+H
+7205.84
+39.0
+H
+12009.88
+34.5
+H
+16815.30
+34.5
+H
+
+Azimuth Height
+AF Loss Amp Avg Value
+Limit
+Margin
+(degrees) (cm) (dB/m) (dB) (dB) dBuV/m (dBuV/m) (dB)
+13.0
+177.0 35.4
+3.6 34.8
+42.9
+54.0
+-11.1
+85.0
+101.0 35.4
+4.6 35.4
+43.6
+54.0
+-10.4
+25.0
+105.0 38.7
+5.9 35.9
+43.2
+54.0
+-10.8
+26.0
+101.0 41.8
+7.0 36.9
+46.4
+54.0
+-7.6
+Peak Data
+
+Frequency Raw Pk
+MHz
+dBuV
+4804.36
+48.7
+7205.84
+49.1
+12009.88
+47.8
+16815.30
+47.4
+
+SGS North America Inc.
+
+Polarity
+(V/H)
+H
+H
+H
+H
+
+Consumer and Retail
+
+Azimuth Height
+AF Loss Amp
+(degrees) (cm) (dB/m) (dB) (dB)
+13.0
+177.0 35.4
+3.6 34.8
+85.0
+101.0 35.4
+4.6 35.4
+25.0
+105.0 38.7
+5.9 35.9
+26.0
+101.0 41.8
+7.0 36.9
+
+Final Pk
+dBuV/m
+52.9
+53.7
+56.5
+59.2
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+Limit
+dBuV/m
+74.0
+74.0
+74.0
+74.0
+
+t (770) 570-1800
+
+Margin
+dB
+-21.1
+-20.3
+-17.5
+-14.8
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 29 of 41
+BLE Channel 19
+Vertical Plot (3-18GHz)
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Pk Limit
+
+Radiated Spurious Emissions
+Vertical
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+3.00G
+
+10.00G
+
+18.00G
+
+Frequency
+
+Vertical Data (3-18GHz)
+Average Data
+
+Frequency Raw Avg Polarity Azimuth Height AF Loss Amp Final Avg
+Limit
+Margin
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB) dBuV/m (dBuV/m) (dB)
+4879.32
+36.7
+V
+299.0 103.0 35.3 3.6 34.8
+40.9
+54.0
+-13.1
+7320.32
+40.3
+V
+109.0 116.0 35.6 4.6 35.4
+45.1
+54.0
+-8.9
+Peak Data
+
+Frequency Raw Pk Polarity Azimuth Height AF Loss Amp Final Pk
+MHz
+dBuV (V/H) (degrees) (cm) (dB/m) (dB) (dB) dBuV/m
+4879.32
+47.8
+V
+299.0 103.0 35.3 3.6 34.8 51.9
+7320.32
+50.7
+V
+109.0 116.0 35.6 4.6 35.4 55.4
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+Limit Margin
+dBuV/m dB
+74.0
+-22.1
+74.0
+-18.6
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 30 of 41
+BLE Channel 19
+Horizontal Plot (3-18GHz)
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Pk Limit
+
+Radiated Spurious Emissions
+Horizontal
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+3.00G
+
+10.00G
+
+18.00G
+
+Frequency
+
+Horizontal Data (3-18GHz)
+Average Data
+
+Frequency Raw Avg Polarity Azimuth Height AF Loss Amp Avg Value Limit
+Margin
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB) dBuV/m (dBuV/m) (dB)
+4880.28
+35.1
+H
+358.0 107.0 35.3 3.6 34.8
+39.3
+54.0
+-14.7
+7319.36
+37.4
+H
+15.0
+100.0 35.6 4.6 35.4
+42.1
+54.0
+-11.8
+Peak Data
+
+Frequency Raw Pk Polarity Azimuth Height AF Loss Amp
+MHz
+dBuV (V/H) (degrees) (cm) (dB/m) (dB) (dB)
+4880.28
+45.5
+H
+358.0 107.0 35.3 3.6 34.8
+7319.36
+48.5
+H
+15.0
+100.0 35.6 4.6 35.4
+
+SGS North America Inc.
+
+Consumer and Retail
+
+Final Pk
+dBuV/m
+49.6
+53.3
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+Limit
+Margin
+dBuV/m
+dB
+74.0
+-24.4
+74.0
+-20.7
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 31 of 41
+BLE Channel 39
+Vertical Plot (3-18GHz)
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Pk Limit
+
+Radiated Spurious Emissions
+Vertical
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+3.00G
+
+10.00G
+
+18.00G
+
+Frequency
+
+Vertical Data (3-18GHz)
+Average Data
+
+Frequency Raw Avg Polarity
+MHz
+dBuV
+(V/H)
+4960.40
+32.9
+V
+7439.18
+32.5
+V
+
+Frequency
+MHz
+4960.40
+7439.18
+
+SGS North America Inc.
+
+Raw Pk
+dBuV
+46.1
+45.1
+
+Polarity
+(V/H)
+V
+V
+
+Consumer and Retail
+
+Azimuth Height
+AF Loss Amp Final Avg
+(degrees) (cm) (dB/m) (dB) (dB) dBuV/m
+285.0
+175.0 35.1
+3.7 34.8
+36.9
+105.0
+250.0 35.7
+4.6 35.4
+37.5
+
+Azimuth
+(degrees)
+285.0
+105.0
+
+Peak Data
+Height
+AF Loss Amp
+
+(cm)
+175.0
+250.0
+
+(dB/m)
+35.1
+35.7
+
+(dB) (dB)
+3.7 34.8
+4.6 35.4
+
+Final Pk
+dBuV/m
+50.1
+50.0
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+Limit
+Margin
+(dBuV/m) (dB)
+54.0
+-17.1
+54.0
+-16.5
+
+Limit
+dBuV/m
+74.0
+74.0
+
+t (770) 570-1800
+
+Margin
+dB
+-23.9
+-24.0
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 32 of 41
+BLE Channel 39
+Horizontal Plot (3-18GHz)
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Pk Limit
+
+Radiated Spurious Emissions
+Horizontal
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+3.00G
+
+10.00G
+
+18.00G
+
+Frequency
+
+No spurious emissions observed
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 33 of 41
+BLE Channel 0
+Vertical Plot (18-26GHz)
+FCC 15.209a 1.5m
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+
+Radiated Spurious Emissions
+Vertical
+90.0
+
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+18.00G
+
+26.00G
+Frequency
+
+Vertical Data (18-26GHz)
+Average Data
+
+Frequency Raw Pk Polarity Azimuth Height AF Loss Amp
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB)
+19217.96
+58.2
+V
+60.0
+250.0 38.5 8.2 50.9
+21616.00
+59.0
+V
+288.0
+250.0 38.4 8.7 51.7
+
+Final Pk
+dBuV/m
+54.0
+54.3
+
+Limit
+dBuV/m
+80.0
+80.0
+
+Margin
+dB
+-26.0
+-25.7
+
+Peak Data
+
+Frequency Raw Avg Polarity Azimuth Height AF Loss Amp Final Avg
+Limit
+Margin
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB) dBuV/m (dBuV/m) (dB)
+19217.96
+45.3
+V
+60.0
+250.0 38.5 8.2 50.9
+41.0
+60.0
+-19.0
+21616.00
+46.4
+V
+288.0
+250.0 38.4 8.7 51.7
+41.8
+60.0
+-18.2
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 34 of 41
+BLE Channel 0
+Horizontal Plot (18-26GHz)
+FCC 15.209a 1.5m
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+
+Radiated Spurious Emissions
+Horizontal
+90.0
+
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+18.00G
+
+26.00G
+Frequency
+
+Horizontal Data (18-26GHz)
+Average Data
+
+Frequency Raw Pk Polarity Azimuth Height AF Loss Amp
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB)
+19214.24
+63.3
+H
+280.0 113.0 38.5 8.2 50.9
+21615.04
+60.9
+H
+177.0 161.0 38.4 8.7 51.7
+
+Final Pk
+dBuV/m
+59.0
+56.2
+
+Limit
+Margin
+dBuV/m
+dB
+80.0
+-21.0
+80.0
+-23.8
+
+Peak Data
+
+Frequency Raw Avg Polarity Azimuth Height AF Loss Amp Avg Value Limit
+Margin
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB) dBuV/m (dBuV/m) (dB)
+19214.24 51.0
+H
+280.0 113.0 38.5 8.2 50.9
+46.7
+60.0
+-13.3
+21615.04 47.6
+H
+177.0 161.0 38.4 8.7 51.7
+43.0
+60.0
+-17.0
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 35 of 41
+BLE Channel 19
+Vertical Plot (18-26GHz)
+FCC 15.209a 1.5m
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+
+Radiated Spurious Emissions
+Vertical
+90.0
+
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+18.00G
+
+26.00G
+Frequency
+
+Vertical Data (18-26GHz)
+Average Data
+
+Frequency Raw Pk Polarity Azimuth Height AF Loss Amp
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB)
+19518.84
+59.8
+V
+276.0
+173.0 38.9 8.3 51.1
+
+Final Pk
+dBuV/m
+55.9
+
+Limit
+Margin
+dBuV/m
+dB
+80.0
+-24.1
+
+Peak Data
+
+Frequency Raw Avg Polarity Azimuth Height AF Loss Amp Final Avg
+Limit
+Margin
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB) dBuV/m (dBuV/m) (dB)
+19518.84
+47.2
+V
+276.0
+173.0 38.9 8.3 51.1
+43.2
+60.0
+-16.8
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 36 of 41
+BLE Channel 19
+Horizontal Plot (18-26GHz)
+FCC 15.209a 1.5m
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+
+Radiated Spurious Emissions
+Horizontal
+90.0
+
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+18.00G
+
+26.00G
+Frequency
+
+Horizontal Data (18-26GHz)
+Average Data
+
+Frequency Raw Pk Polarity Azimuth Height AF Loss Amp
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB)
+19519.20
+58.2
+H
+359.0 231.0 38.9 8.3 51.1
+
+Final Pk
+dBuV/m
+54.3
+
+Limit
+Margin
+dBuV/m
+dB
+80.0
+-25.7
+
+Peak Data
+
+Frequency Raw Avg Polarity Azimuth Height AF Loss Amp Avg Value Limit
+Margin
+MHz
+dBuV
+(V/H) (degrees) (cm) (dB/m) (dB) (dB) dBuV/m (dBuV/m) (dB)
+19519.20 45.3
+H
+359.0 231.0 38.9 8.3 51.1
+41.4
+60.0
+-18.6
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 37 of 41
+BLE Channel 39
+Vertical Plot (18-26GHz)
+FCC 15.209a 1.5m
+Radiated Spurious Emissions
+Vertical
+90.0
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+18.00G
+
+26.00G
+Frequency
+
+No spurious emissions observed
+
+Horizontal Plot (18-26GHz)
+FCC 15.209a 1.5m
+Radiated Spurious Emissions
+Horizontal
+90.0
+
+Peak Emissions
+Avg Emissions
+Peak Measurement
+Avg Measurement
+Avg Limit
+Peak Limit
+
+80.0
+
+Amplitude dBuV/m
+
+70.0
+
+60.0
+
+50.0
+
+40.0
+
+30.0
+
+20.0
+18.00G
+
+26.00G
+Frequency
+
+No spurious emissions observed
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 38 of 41
+
+8 Band Edge Emissions in Restricted Frequency Bands
+8.1
+
+Test Result
+
+Test Description
+Band Edge Emissions in
+Restricted Frequency Bands
+
+8.2
+
+Test Specification
+15.205, 15.209
+
+Test Result
+
+RSS-GEN S8.9, 8.10
+
+Compliant
+
+Test Method
+
+Field strength measurements were performed at the restricted band edges of 2390MHz and 2483.5MHz.
+Measurements were made using the conducted methods defined in ANSI C63.10: 2013 clause 11.12.2.
+The measurements were converted to a radiated field strength equivalent using the equations defined in
+that section. Both peak and average measurements were performed at the antenna port. These
+procedures are referenced in KDB 558074 D01 15.247 Meas Guidance v05r02. See section 2.5 above
+for test setup diagram.
+Offset Calculations:
+A reference level offset was applied to the spectrum analyzer so that conducted measurements in dBµV
+represent field strength measurements in dBµV/m.
+Offset = -20Log(D) + 104.8 - 107 + CL + DC + AG
+Offset3m = -11.7 + CL + DC + AG
+Where:
+D = 3m
+CL = 0.73 dB
+DC = 1.9 dB (64.8%)
+AG = 2 dB
+
+Distance
+Cable Loss
+Duty Cycle Correction Factor [10Log(1/Duty Cycle)]
+Antenna Gain [2 dB is the minimum allowed by the test method]
+
+Offset = -7.07 dB
+
+8.3
+
+Test Site
+
+SGS EMC Laboratory, Suwanee, GA
+Environmental Conditions
+Temperature: 24.1 °C
+Relative Humidity: 42.0 %
+Atmospheric Pressure: 97.4 kPa
+
+8.4
+
+Test Equipment
+Test End Date: 23-Apr-2020
+
+Tester: MT
+
+Equipment
+
+Model
+
+Manufacturer
+
+RF CABLE (TS8997)
+
+141
+
+Huber & Suhner
+
+Asset Number Cal Due Date
+B095585
+
+6-Sep-2020
+
+SIGNAL ANALYZER (TS8997)
+
+FSV30
+
+ROHDE & SCHWARZ
+
+B085749
+
+27-Dec-2021
+
+Note: The equipment calibration period is 1 year except for the FSV which is on a 2-year cycle.
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 39 of 41
+
+8.5
+
+Test Data
+BLE – Low Channel
+
+BLE – High Channel
+
+SGS North America Inc.
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 40 of 41
+
+9 Measurement Uncertainty
+The measurement uncertainty figures are calculated in accordance with TR 100 028-1 [2] and
+correspond to an expansion factor (coverage factor) k = 2 (which provides confidence levels of 95.45 %
+in the case where the distributions characterizing the actual measurement uncertainties are normal
+(Gaussian)).
+
+Parameter
+Radio Frequency
+total RF power, conducted
+RF power density, conducted
+spurious emissions, conducted
+all emissions, radiated
+temperature
+humidity
+DC and low frequency voltages
+Conducted disturbance at mains
+port using AMN
+
+SGS North America Inc.
+
+Consumer and Retail
+
+Expanded Uncertainty for Normal k factor equal to 2
+Required
+Laboratory Actual
+±1 x 10-5
+±9.8 x 10-8
+±1.5 dB
+±1.2 dB
+±3 dB
+±0.7 dB
+±3 dB
+±2.1 dB
+±6 dB
+±4.8 dB
+±1°C
+±0.5°C
+±5 %
+±3.5%
+±3 %
+±0.4%
+± 3.4 dB
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+± 2.5 dB
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+Test Report Number: 4598567EMC05 Rev: 1
+Owlet Baby Care Inc. / OBL 3.0
+Page: 41 of 41
+
+10 Revision History
+Revision
+Level
+
+Description of changes
+
+Draft
+0
+
+1
+
+-
+
+SGS North America Inc.
+
+Revision Date
+
+-Initial release
+Added sample ID in section 2.3
+Added EUT firmware version in section 2.3
+Added references to current version of KDB 558074 in
+sections 3.2, 4.2, 5.2, 6.2, 7.2 & 8.2
+Added test setup diagrams in section 7.2 and references
+to test setup diagrams in sections 3.2, 4.2, 5.2, 6.2 & 8.2
+
+Consumer and Retail
+
+620 Old Peachtree Road NW, Suite 100, Suwanee, GA 30024
+
+22 May 2020
+05 June 2020
+
+07 July 2020
+
+t (770) 570-1800
+
+www.sgs.com
+
+Member of the SGS Group (SGS SA)
+
+

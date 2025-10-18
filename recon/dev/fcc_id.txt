@@ -1,0 +1,2 @@
+base station: 2AIEP-0BL3A
+sensor: 2AIEP-0SS3A
