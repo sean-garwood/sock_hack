@@ -1,0 +1,28 @@
+{
+  "connect_history": [
+    {
+      "ssid_info": "cr",
+      "ssid_len": 6,
+      "bssid": "c684",
+      "error": 2,
+      "msg": "connection timed out",
+      "mtime": 760,
+      "last": 0,
+      "ip_addr": "0.0.0.0",
+      "netmask": "0.0.0.0",
+      "default_route": "0.0.0.0",
+      "dns_servers": ["0.0.0.0", "0.0.0.0"]
+    }
+  ],
+  "dsn": "AC000W025363194",
+  "device_service": "SS3-Sleep-1a2039d9-device.aylanetworks.com",
+  "log_service": "",
+  "mac": "26:cd:8d:e2:99:3a",
+  "mtime": 16740845,
+  "host_symname": "AC000W025363194",
+  "connected_ssid": "",
+  "ant": 1,
+  "rssi": -200,
+  "bars": 0,
+  "state": "down"
+}

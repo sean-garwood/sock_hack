@@ -90,41 +90,61 @@ function wifi_spec_status_resp(d, b) {
   elem_set("div2", "");
 }
 /**
- * Fake an asynchronous request
+ * Desynchronize? @todo determine the purpose of this silly function
  *
- * @param
+ * @param httpRequestType One of the seven HTTP requests (GET, POST, etc.).
+ * @param url The resource to send the request to.
+ * @param delay Milliseconds to timeout.
+ * @param resolveCallback Callback function: can be
+ *        {@link wifi_prof_resp} or
+ *        {@link wifi_scan_rslt_resp} apparently.
  */
-
-function send_async_req(httpRequestType, a, d, f) {
+function send_async_req(httpRequestType, url, delay, resolveCallback) {
   const req = new XMLHttpRequest();
-  let someFlag = false;
-  const cb = setTimeout(function () {
-    someFlag = true;
+  let finished = false;
+  const wait = setTimeout(function () {
+    finished = true;
     req.abort();
-  }, d);
-  req.open(httpRequestType, a, true);
+  }, delay);
+  const done = 4; // readyState enum 4: DONE: The operation is complete.
+  const isNotDone = () => req.readyState !== done;
+
+  req.open(httpRequestType, url, true);
   req.onreadystatechange = function () {
-    if (req.readyState !== 4) {
-      return;
+    if (isNotDone()) {
+      return; // keep going: return control to this.profiles().
     }
-    if (someFlag) {
-      return;
+    if (finished) {
+      return; // the request was aborted: keep going.
     }
-    clearTimeout(cb);
-    f(req.responseText, req.status);
+    clearTimeout(wait); // else, stop waiting and...
+    resolveCallback(req.responseText, req.status); // ...resolve the request.
   };
-  req.send(null);
+  req.send(null); // time to scan!
 }
 
-function send_sync_req(d, a, c) {
-  let b = new XMLHttpRequest();
-  b.open(d, a, false);
-  b.send(null);
-  c(b.responseText, b.status);
+/**
+ * Creates an XHR, opens (@todo ?) and sends (@todo ?) null
+ * @param httpMethod The HTTP method to use.
+ * @param url the resource to send the reqest to
+ * @param wifiStatusResponseCallback A callback to the {@link wifi_status_resp}.
+ */
+function send_sync_req(httpMethod, url, wifiStatusResponseCallback) {
+  let xhr = new XMLHttpRequest();
+  xhr.open(httpMethod, url, false);
+  xhr.send(null); // send the xhr to the server. We have a server running on this thing?! Guess we have to.
+  wifiStatusResponseCallback(xhr.responseText, xhr.status); // call wifi_status_resp
 }
 
-function wifi_status_resp(b, a) {
-  window.wifi_status = JSON.parse(b).wifi_status;
+/**
+ * Sets global wifi_status to the value of ...b?
+ * @param data JSON data of some sort
+ * @todo Figure out what the heck the json data is
+ * @param _a Unused argument?
+ */
+function wifi_status_resp(data, _a) {
+  // data is "{\"wifi_status\":{\"connect_history\":[{\"ssid_info\": \"cr\",\"ssid_len\":6,\"bssid\":\"c684\",\"error\":2,\"msg\":\"connection timed out\",\"mtime\":760,\"last\":0,\"ip_addr\":\"0.0.0.0\",\"netmask\":\"0.0.0.0\",\"default_route\":\"0.0.0.0\",\"dns_servers\":[\"0.0.0.0\",\"0.0.0.0\"]}],\"dsn\":\"AC000W025363194\",\"device_service\":\"SS3-Sleep-1a2039d9-device.aylanetworks.com\",\"log_service\":\"\",\"mac\":\"26:cd:8d:e2:99:3a\",\"mtime\":16740845,\"host_symname\":\"AC000W025363194\",\"connected_ssid\":\"\",\"ant\":1,\"rssi\":-200,\"bars\":0,\"state\":\"down\"}}"
+  window.wifi_status = JSON.parse(data).wifi_status; // set the wifi status to data.wifi_status
 }
 
 /**
@@ -291,7 +311,12 @@ function wifi_scan_rslt_resp(b, a) {
   scan_tab();
 }
 
-function scan(b, a) {
+/**
+ * Calls `send_async_req`
+ * @param _b Unused. Not sure why it's here.
+ * @param _a Unused. Not sure why it's here.
+ */
+function scan(_b, _a) {
   send_async_req("GET", "wifi_scan_results.json", 1000, wifi_scan_rslt_resp);
 }
 
