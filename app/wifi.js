@@ -95,11 +95,11 @@ function wifi_spec_status_resp(d, b) {
  * @param httpRequestType One of the seven HTTP requests (GET, POST, etc.).
  * @param url The resource to send the request to.
  * @param delay Milliseconds to timeout.
- * @param resolveCallback Callback function: can be
+ * @param res Callback function: can be
  *        {@link wifi_prof_resp} or
  *        {@link wifi_scan_rslt_resp} apparently.
  */
-function send_async_req(httpRequestType, url, delay, resolveCallback) {
+function send_async_req(httpRequestType, url, delay, res) {
   const req = new XMLHttpRequest();
   let finished = false;
   const wait = setTimeout(function () {
@@ -118,7 +118,7 @@ function send_async_req(httpRequestType, url, delay, resolveCallback) {
       return; // the request was aborted: keep going.
     }
     clearTimeout(wait); // else, stop waiting and...
-    resolveCallback(req.responseText, req.status); // ...resolve the request.
+    res(req.responseText, req.status); // ...resolve the request.
   };
   req.send(null); // time to scan!
 }
@@ -181,9 +181,22 @@ function wifi_connect_resp(b, a) {
 
 function conn_start(c, a) {
   let b = "wifi_connect.json?" + ssid_or_bssid(a);
+  // Looks like we're adding the password to the URL? Yikes.
+  // oh and it's port 80, so no TLS. Double yikes.
   if (c != "") {
+    // all good as long as c is not empty. Triple yikes.
+    // let's say c == `${eval('some_malicious_code')}`
+    // now we have a problem.
     b += "&key=" + encodeURIComponent(c);
   }
+  // just POST it off to the server. What could go wrong?
+  // Let me tell you what could go wrong: everything!
+  // including but not limited to: eavesdropping
+  // man-in-the-middle attacks
+  // replay attacks
+  // password leakage via referer headers
+  // logging of URLs by intermediate proxies
+  // arbitrary
   send_async_req("POST", b, 1000, wifi_connect_resp);
 }
 
