@@ -212,7 +212,7 @@ function conn_start(c, a) {
 }
 
 function conn_ok() {
-  let a = window.scan_cur;
+  let a = window.scan_cur; // server-side global variable?
   try {
     let d = document.getElementById("ssid");
     if (d) {
@@ -229,13 +229,14 @@ function conn_ok() {
 }
 
 function conn_cancel() {
-  window.scan_cur = null;
+  window.scan_cur = null; // server-side global variable?
   elem_set("status", "");
   redraw();
 }
 
+/** prompt for connection info */
 function conn_prompt() {
-  let a = window.scan_cur;
+  let a = window.scan_cur; // server-side global variable?
   let b = "<caption>Connect to network</caption><tr><td>Network<td>";
   if (a.ssid == "Join Other Network...") {
     b +=
@@ -255,8 +256,8 @@ function conn_prompt() {
 }
 
 function connect(b) {
-  let a = window.scan_results[b];
-  window.scan_cur = a;
+  let a = window.scan_results[b]; // server-side global variable?
+  window.scan_cur = a; // server-side global variable?
   if (a.security != "None") {
     conn_prompt();
   } else {
@@ -296,7 +297,7 @@ function scan_line(b, a) {
   return d;
 }
 
-/** render the wifi networks' refresh and buttons to connect */
+/** render the available wifi networks table */
 function scan_tab() {
   let c = window.scan_results;
   let b =
@@ -358,23 +359,28 @@ function prof_del_resp(b, a) {
   update();
 }
 
-function del_ok(c) {
-  let b = unescapeHtml(c);
-  let a = "wifi_profile.json?ssid=" + encodeURIComponent(b);
-  send_async_req("DELETE", a, 1000, prof_del_resp);
+/** Sends a request to the server to delete profile denoted by @param ssidElement*/
+function del_ok(ssidElement) {
+  let ssid = unescapeHtml(ssidElement);
+  let params = "wifi_profile.json?ssid=" + encodeURIComponent(ssid);
+  send_async_req("DELETE", params, 1000, prof_del_resp);
 }
 
-function prof_delete(c) {
+/** draws the confirmation dialog for deleting a profile
+ * calls {@link del_ok} on confirmation
+ * @param ssidElement html element containing the SSID of the profile to delete
+ */
+function prof_delete(ssidElement) {
   let a = "<table><caption>Confirm ";
-  let b = unescapeHtml(c);
+  let b = unescapeHtml(ssidElement);
   if (b == window.wifi_status.connected_ssid) {
     a += "disconnect and ";
   }
   a +=
     "delete of network " +
-    c +
+    ssidElement +
     '</caption><tr><td><button type=button onclick="redraw()">Cancel</button><td><button type=button onclick="del_ok(&quot;' +
-    c +
+    ssidElement +
     '&quot;)">OK</button></table>';
   elem_set("div1", a);
   elem_set("div2", "");
@@ -400,33 +406,35 @@ function prof_line(b) {
 }
 
 /**
- * render profiles, likely saved server side?
+ * render profiles table
  */
-function prof_tab(a) {
-  let d = window.proftab; // just exists on window somehow.
-  let c;
-  c =
+function prof_tab(_a) {
+  let profiles = window.proftab; // server-side global variable? Probably an array
+  let profilesTable;
+  profilesTable =
     "<table class=networks><caption><h4>Wi-Fi Profiles</h4></caption><thead><tr><th>Network<th>Status<th><th><tbody>";
-  if (d != null) {
-    d.sort(function (f, e) {
-      if (e.ssid == f.ssid) {
+  if (profiles != null) {
+    profiles.sort(function (p1, p2) {
+      if (p2.ssid == p1.ssid) {
         return 0;
       }
-      return e.ssid < f.ssid ? 1 : -1;
+      return p2.ssid < p1.ssid ? 1 : -1;
     });
-    for (let b = 0; b < d.length; b++) {
-      c += prof_line(d[b]);
+    for (let i = 0; i < profiles.length; i++) {
+      profilesTable += prof_line(profiles[i]); // build the table row by row
     }
   }
-  c += "</table>";
-  elem_set("div2", c);
+  profilesTable += "</table>";
+  elem_set("div2", profilesTable);
 }
 
-function wifi_prof_resp(b, a) {
-  window.proftab = JSON.parse(b).wifi_profiles;
+/** response handler for wifi profiles */
+function wifi_prof_resp(b, _a) {
+  window.proftab = JSON.parse(b).wifi_profiles; // server-side global variable?
   prof_tab();
 }
 
+/** get wifi profiles from server */
 function profiles() {
   send_async_req("GET", "wifi_profiles.json", 1000, wifi_prof_resp);
 }
