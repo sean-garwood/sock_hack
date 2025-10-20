@@ -11,16 +11,24 @@ function banner(a) {
   );
 }
 
-function elem_set(b, a) {
-  document.getElementById(b).innerHTML = a;
+/**
+ * Sets innerHTML of @param dst to @param src.
+ */
+function elem_set(dst, src) {
+  document.getElementById(dst).innerHTML = src;
 }
 
-function escapeHtml(a) {
+/** creates a new div and inserts a child with @param content */
+function escapeHtml(content) {
   let b = document.createElement("div");
-  b.appendChild(document.createTextNode(a));
+  b.appendChild(document.createTextNode(content));
   return b.innerHTML;
 }
 
+/** creates a div, sets its innerHTML to @param a sets its first child node.
+ * @returns the value of the first child node if the child node exists, else an
+ * empty string is returned.
+ */
 function unescapeHtml(a) {
   let c = document.createElement("div");
   c.innerHTML = a;
@@ -97,6 +105,7 @@ function wifi_spec_status_resp(d, b) {
  * @param delay Milliseconds to timeout.
  * @param res Callback function: can be
  *        {@link wifi_prof_resp} or
+ *        {@link wifi_spec_status_resp} or
  *        {@link wifi_scan_rslt_resp} apparently.
  */
 function send_async_req(httpRequestType, url, delay, res) {
@@ -120,7 +129,7 @@ function send_async_req(httpRequestType, url, delay, res) {
     clearTimeout(wait); // else, stop waiting and...
     res(req.responseText, req.status); // ...resolve the request.
   };
-  req.send(null); // time to scan!
+  req.send(null); // send request to the server
 }
 
 /**
@@ -155,7 +164,7 @@ function wifi_status_get(statusFlag = 0) {
   let b = "wifi_status.json";
   let d = wifi_status_resp;
   if (statusFlag) {
-    let a = window.scan_cur;
+    let a = window.scan_cur; // must be server-side.
     if (!a) {
       return;
     }
@@ -285,6 +294,7 @@ function scan_line(b, a) {
   return d;
 }
 
+/** render the wifi networks' refresh and buttons to connect */
 function scan_tab() {
   let c = window.scan_results;
   let b =
@@ -387,8 +397,11 @@ function prof_line(b) {
   );
 }
 
+/**
+ * render profiles, likely saved server side?
+ */
 function prof_tab(a) {
-  let d = window.proftab;
+  let d = window.proftab; // just exists on window somehow.
   let c;
   c =
     "<table class=networks><caption><h4>Wi-Fi Profiles</h4></caption><thead><tr><th>Network<th>Status<th><th><tbody>";
