@@ -1,23 +1,22 @@
-# Get WiFi status
+# API endpoints to test
 
-curl <http://192.168.0.1/wifi_status.json>
-
-# Get available WiFi networks
-
-curl <http://192.168.0.1/wifi_scan_results.json>
-
-# Trigger a WiFi scan
+## Trigger a WiFi scan
 
 curl -X POST <http://192.168.0.1/wifi_scan.json>
 
-# Get saved WiFi profiles
+## Connect to a WiFi network (with SSID and password)
 
-curl <http://192.168.0.1/wifi_profiles.json>
+curl -X POST
+"<http://192.168.0.1/wifi_connect.json?ssid=YourNetworkName&key=YourPassword>"
 
-# Connect to a WiFi network (with SSID and password)
+### invalid data
 
-curl -X POST "<http://192.168.0.1/wifi_connect.json?ssid=YourNetworkName&key=YourPassword>"
+see [wifi_connect.json](../../recon/api/wifi_connect.json)
 
-# Delete a WiFi profile
+### valid data
+
+todo
+
+## Delete a WiFi profile
 
 curl -X DELETE "<http://192.168.0.1/wifi_profile.json?ssid=NetworkNameToDelete>"
