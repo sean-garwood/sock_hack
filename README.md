@@ -30,3 +30,8 @@ The [user interface](./app/index.html) can be accessed by connecting to the AP
 and navigating to 192.168.0.1. It displays a list of all available wifi
 networks, as well as connect buttons and stuff. It also loads [a pretty basic
 script](./app/wifi.js) that serves as the controller.
+
+#### Server-side functions
+
+It seems that Window inherits from globalThis. the `window` object has a number
+of methods for which the definitions are not visible.

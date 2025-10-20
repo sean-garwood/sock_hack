@@ -36,6 +36,7 @@ function unescapeHtml(a) {
   return b ? b.nodeValue : "";
 }
 
+/** flashes a message */
 function status_msg(c, b) {
   let a = "Cancel";
   if (b) {
@@ -52,8 +53,9 @@ function status_msg(c, b) {
   document.getElementById("status").scrollIntoView(true);
 }
 
-function scan_td(a) {
-  return "<td>" + a + "</td>";
+/** @param scanData get one row of the scan results */
+function scan_td(scanData) {
+  return "<td>" + scanData + "</td>";
 }
 
 function ssid_or_bssid(a) {
