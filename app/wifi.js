@@ -1,8 +1,6 @@
 /**
  * Draw interface from which the user selects the wifi network to "connect" to.
- * @todo figure out what we're connecting to...
  */
-
 function banner(a) {
   document.writeln(
     "<title>" +
@@ -53,20 +51,23 @@ function status_msg(c, b) {
   document.getElementById("status").scrollIntoView(true);
 }
 
-/** @param scanData get one row of the scan results */
+/** @param scanData draw one row of the scan results */
 function scan_td(scanData) {
   return "<td>" + scanData + "</td>";
 }
 
-function ssid_or_bssid(a) {
-  if (a.bssid) {
-    return "bssid=" + encodeURIComponent(a.bssid);
+/** Generates either ssid= or bssid= string for URL parameter
+ * @param id object with either bssid or ssid property */
+function ssid_or_bssid(id) {
+  if (id.bssid) {
+    return "bssid=" + encodeURIComponent(id.bssid);
   }
-  return "ssid=" + encodeURIComponent(a.ssid);
+  return "ssid=" + encodeURIComponent(id.ssid);
 }
 
+/** response handler for specific wifi status */
 function wifi_spec_status_resp(d, b) {
-  let c = window.scan_cur;
+  let c = window.scan_cur; // server-side global variable?
   let i;
   let g;
   let h;
@@ -166,11 +167,11 @@ function wifi_status_get(statusFlag = 0) {
   let b = "wifi_status.json";
   let d = wifi_status_resp;
   if (statusFlag) {
-    let a = window.scan_cur; // must be server-side.
-    if (!a) {
+    let networkId = window.scan_cur; // server-side global variable? Probably an SSID or BSSID of a wifi network
+    if (!networkId) {
       return;
     }
-    b += "?" + ssid_or_bssid(a);
+    b += "?" + ssid_or_bssid(networkId);
     d = wifi_spec_status_resp;
     send_async_req("GET", b, 1000, d);
     return;
