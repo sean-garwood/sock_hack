@@ -1,0 +1,26 @@
+$ nmap -sV 192.168.0.1
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-10-19 22:50 EDT
+Nmap scan report for 192.168.0.1
+Host is up (0.011s latency).
+Not shown: 999 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+80/tcp open  http
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.95%I=7%D=10/19%Time=68F5A399%P=x86_64-unknown-linux-gnu%
+SF:r(GetRequest,1BF,"HTTP/1\.1\x20200\x20OK\r\nContent-Type:\x20text/html\
+SF:r\nContent-Length:\x20344\r\nCache-Control:\x20private,\x20max-age=3600
+SF:\r\n\r\n<!DOCTYPE\x20HTML\x20PUBLIC\x20\"-//W3C//DTD\x20HTML\x204\.01//
+SF:EN\x20http://www\.w3\.org/TR/html4/strict\.dtd\">\n<html>\n<head>\n<met
+SF:a\x20name=viewport\x20content=\"width=device-width,\x20initial-scale=1\
+SF:.0,\x20maximum-scale=2\.0,\x20user-scalable=yes\"/>\n<link\x20rel=\"sty
+SF:lesheet\"\x20href=\"style\.css\"\x20type=\"text/css\"\x20media=\"screen
+SF:\">\n<script\x20type=\"text/javascript\"\x20src=wifi\.js></script>\n</b
+SF:ody>\n")%r(FourOhFourRequest,D4,"HTTP/1\.1\x20404\x20Not\x20Found\r\nCo
+SF:ntent-Type:\x20text/html\r\n\r\n<!doctype\x20html>\n<html><head><title>
+SF:404\x20-\x20Page\x20not\x20found</title></head><body>\n<h1>Page\x20not\
+SF:x20found\.</h1>\n<p><a\x20href=\"/\">Return\x20to\x20home\x20page</a></
+SF:p>\n</body>\n</html>\n");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 144.91 seconds
+
