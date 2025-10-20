@@ -1,0 +1,34 @@
+{
+  "wifi_scan": {
+    "mtime": 10838,
+    "results": [
+      {
+        "ssid": "kenwood",
+        "type": "AP",
+        "chan": 11,
+        "signal": -52,
+        "bars": 3,
+        "security": "WPA2 Personal AES",
+        "bssid": "82bdc523c683"
+      },
+      {
+        "ssid": "Master",
+        "type": "AP",
+        "chan": 6,
+        "signal": -80,
+        "bars": 1,
+        "security": "None",
+        "bssid": "00199dffd128"
+      },
+      {
+        "ssid": "Verizon_KQK6K9",
+        "type": "AP",
+        "chan": 1,
+        "signal": -85,
+        "bars": 1,
+        "security": "WPA2 Personal AES",
+        "bssid": "3cbdc5f2cdad"
+      }
+    ]
+  }
+}
