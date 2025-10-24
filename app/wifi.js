@@ -1,3 +1,12 @@
+(() => {
+  wifi_status_get();
+  banner(window.wifi_status.host_symname + " Wifi Status");
+  document.writeln(
+    "<section><div class=centered><br><div id=div1></div><br><br><div id=div2></div>"
+  );
+  update();
+})();
+
 /**
  * Draw interface from which the user selects the wifi network to "connect" to.
  */
@@ -66,35 +75,41 @@ function ssid_or_bssid(id) {
 }
 
 /** response handler for specific wifi status */
-function wifi_spec_status_resp(d, b) {
+function wifi_spec_status_resp(data, httpStatusCode) {
   let c = window.scan_cur; // server-side global variable?
-  let i;
-  let g;
-  let h;
-  let a = 0;
-  if (b !== 200) {
+  let wifiStatus;
+  let firstConnHistoryEntry;
+  let msg;
+  let flag = 0;
+  if (httpStatusCode !== 200) {
     return;
   }
-  i = JSON.parse(d).wifi_status;
+
+  wifiStatus = JSON.parse(data).wifi_status;
   try {
-    g = i.connect_history[0];
-    if (g.last == 1 && g.error == 0) {
-      h = "Connection complete.";
-      a = 1;
+    firstConnHistoryEntry = wifiStatus.connect_history[0];
+    if (firstConnHistoryEntry.last == 1 && firstConnHistoryEntry.error == 0) {
+      msg = "Connection complete.";
+      flag = 1;
     } else {
-      if (g.last == 1) {
-        h = "Connection failed: " + g.msg + " (error " + g.error + ")";
-        a = 1;
+      if (firstConnHistoryEntry.last == 1) {
+        msg =
+          "Connection failed: " +
+          firstConnHistoryEntry.msg +
+          " (error " +
+          firstConnHistoryEntry.error +
+          ")";
+        flag = 1;
       } else {
-        h = "In progress";
-        if (i.state != null) {
-          h += ": " + i.state;
+        msg = "In progress";
+        if (wifiStatus.state != null) {
+          msg += ": " + wifiStatus.state;
         }
       }
     }
   } catch (f) {}
-  status_msg("Connection to " + escapeHtml(c.ssid) + "<br>" + h, a);
-  if (a == 1) {
+  status_msg("Connection to " + escapeHtml(c.ssid) + "<br>" + msg, flag);
+  if (flag == 1) {
     clearInterval(window.sts_intvl);
   }
   elem_set("div1", "");
@@ -164,27 +179,28 @@ function wifi_status_resp(data, _a) {
  * @param statusFlag Determines whether to send a sync request.
  */
 function wifi_status_get(statusFlag = 0) {
-  let b = "wifi_status.json";
-  let d = wifi_status_resp;
+  let params = "wifi_status.json";
+  let wifiStatus = wifi_status_resp;
   if (statusFlag) {
     let networkId = window.scan_cur; // server-side global variable? Probably an SSID or BSSID of a wifi network
     if (!networkId) {
       return;
     }
-    b += "?" + ssid_or_bssid(networkId);
-    d = wifi_spec_status_resp;
-    send_async_req("GET", b, 1000, d);
+
+    params += "?" + ssid_or_bssid(networkId);
+    wifiStatus = wifi_spec_status_resp;
+    send_async_req("GET", params, 1000, wifiStatus);
     return;
   }
-  send_sync_req("GET", b, d);
+  send_sync_req("GET", params, wifiStatus);
 }
 
-function wifi_connect_resp(b, a) {
-  if (a >= 200 && a < 300) {
-    window.sts_intvl = setInterval(wifi_status_get, 1000, 1);
+function wifi_connect_resp(data, httpStatusCode) {
+  if (httpStatusCode >= 200 && httpStatusCode < 300) {
+    window.sts_intvl = setInterval(wifi_status_get, 1000, 1); // server-side global variable?
     status_msg("Status unknown, please wait.<br>", 0);
   } else {
-    let c = JSON.parse(b);
+    let c = JSON.parse(data);
     if (c != null) {
       status_msg("Error: " + c.msg, 0);
     }
@@ -213,18 +229,18 @@ function conn_start(c, a) {
 }
 
 function conn_ok() {
-  let a = window.scan_cur; // server-side global variable?
+  const id = window.scan_cur; // server-side global variable?
   try {
-    let d = document.getElementById("ssid");
-    if (d) {
-      a.ssid = d.value;
+    const idElement = document.getElementById("ssid");
+    if (idElement) {
+      id.ssid = idElement.value;
     }
-    let b = document.getElementById("key");
-    if (b) {
-      conn_start(b.value, a);
+    const keyElement = document.getElementById("key");
+    if (keyElement) {
+      conn_start(keyElement.value, id);
     }
-  } catch (c) {
-    console.error("caught " + c.message);
+  } catch (error) {
+    console.error("caught " + error.message);
   }
   return false;
 }
@@ -237,32 +253,34 @@ function conn_cancel() {
 
 /** prompt for connection info */
 function conn_prompt() {
-  let a = window.scan_cur; // server-side global variable?
-  let b = "<caption>Connect to network</caption><tr><td>Network<td>";
-  if (a.ssid == "Join Other Network...") {
-    b +=
+  let network = window.scan_cur; // server-side global variable?
+  let html = "<caption>Connect to network</caption><tr><td>Network<td>";
+  if (network.ssid == "Join Other Network...") {
+    html +=
       "<input id=ssid size=15 autocomplete=offautofocus autocapitalize=off autocorrect=offrequired>";
   } else {
-    b += escapeHtml(a.ssid) + "<tr><td>Security<td>" + a.security;
+    html +=
+      escapeHtml(network.ssid) + "<tr><td>Security<td>" + network.security;
   }
-  b +=
+  html +=
     '<tr><td>Password<td><input type=password id=key size=15 required autocapitalize=off autocorrect=off><tr><td><td><button type=button onclick="conn_cancel()">Cancel</button>&nbsp;&nbsp;&nbsp;<button>Connect</button>';
   elem_set(
     "div1",
     '<form onSubmit="return conn_ok();"><table class=networks>' +
-      b +
+      html +
       "</table></form>"
   );
   elem_set("div2", "");
 }
 
-function connect(b) {
-  let a = window.scan_results[b]; // server-side global variable?
-  window.scan_cur = a; // server-side global variable?
-  if (a.security != "None") {
+/** Connect to a Wi-Fi network */
+function connect(networkId) {
+  const targetNetwork = window.scan_results[networkId]; // server-side data?
+  window.scan_cur = targetNetwork; // server-side global variable?
+  if (targetNetwork.security != "None") {
     conn_prompt();
   } else {
-    conn_start("", a);
+    conn_start("", targetNetwork);
   }
 }
 
@@ -309,32 +327,34 @@ function scan_tab() {
   elem_set("div1", "<table class=networks>" + b + "</table>");
 }
 
-function wifi_scan_rslt_resp(b, a) {
-  let d;
+/** Get Wi-Fi scan results and update the table of available networks */
+function wifi_scan_rslt_resp(data, _unknown) {
+  let wifiScanResults;
+  const sortScanResults = (result1, result2) => {
+    if (result2.type != "AP") {
+      return result1.signal;
+    }
+    if (result1.type != "AP") {
+      return -result2.signal;
+    }
+    if (result1.signal == result2.signal && result1.ssid != result2.ssid) {
+      return result2.ssid < result1.ssid ? 1 : -1;
+    }
+    return result2.signal - result1.signal;
+  };
   try {
-    d = JSON.parse(b).wifi_scan.results;
-    d.sort(function (f, e) {
-      if (e.type != "AP") {
-        return f.signal;
-      }
-      if (f.type != "AP") {
-        return -e.signal;
-      }
-      if (f.signal == e.signal && f.ssid != e.ssid) {
-        return e.ssid < f.ssid ? 1 : -1;
-      }
-      return e.signal - f.signal;
-    });
-  } catch (c) {
-    d = new Array();
+    wifiScanResults = JSON.parse(data).wifi_scan.results;
+    wifiScanResults.sort(sortScanResults);
+  } catch (error) {
+    wifiScanResults = new Array();
   }
-  d.push({
+  wifiScanResults.push({
     ssid: "Join Other Network...",
     bars: 0,
     security: "Unknown",
     type: "AP",
   });
-  window.scan_results = d;
+  window.scan_results = wifiScanResults;
   scan_tab();
 }
 
@@ -347,12 +367,13 @@ function scan(_b, _a) {
   send_async_req("GET", "wifi_scan_results.json", 1000, wifi_scan_rslt_resp);
 }
 
+/** not sure why they didn't just use scan() */
 function rescan() {
   send_async_req("POST", "wifi_scan.json", 1000, scan);
 }
 
-function prof_del_resp(b, a) {
-  if (a < 299) {
+function prof_del_resp(_unknown, httpStatusCode) {
+  if (httpStatusCode < 299) {
     status_msg("Delete successful", 1);
   } else {
     status_msg("Delete failed", 1);
@@ -445,14 +466,8 @@ function redraw() {
   prof_tab();
 }
 
+/** Update the Wi-Fi profiles and scan results */
 function update() {
   profiles();
   scan();
 }
-
-wifi_status_get();
-banner(window.wifi_status.host_symname + " Wifi Status");
-document.writeln(
-  "<section><div class=centered><br><div id=div1></div><br><br><div id=div2></div>"
-);
-update();
