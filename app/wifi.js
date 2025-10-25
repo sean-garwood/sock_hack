@@ -1,3 +1,7 @@
+/** Do the stuff
+ * 1. get wifi networks
+ *
+ */
 (() => {
   wifi_status_get();
   banner(window.wifi_status.host_symname + " Wifi Status");
@@ -116,7 +120,7 @@ function wifi_spec_status_resp(data, httpStatusCode) {
   elem_set("div2", "");
 }
 /**
- * Desynchronize? @todo determine the purpose of this silly function
+ * @todo determine the purpose of this silly function
  *
  * @param httpRequestType One of the seven HTTP requests (GET, POST, etc.).
  * @param url The resource to send the request to.
@@ -195,6 +199,10 @@ function wifi_status_get(statusFlag = 0) {
   send_sync_req("GET", params, wifiStatus);
 }
 
+/**
+ * Callback function called by {@link conn_start}
+ * Seems to only be an error handler?
+ */
 function wifi_connect_resp(data, httpStatusCode) {
   if (httpStatusCode >= 200 && httpStatusCode < 300) {
     window.sts_intvl = setInterval(wifi_status_get, 1000, 1); // server-side global variable?
@@ -207,15 +215,19 @@ function wifi_connect_resp(data, httpStatusCode) {
   }
 }
 
-function conn_start(c, a) {
-  let b = "wifi_connect.json?" + ssid_or_bssid(a);
+/**
+ * Attempt to connect to a wifi network using @param password
+ * and @param networkId
+ */
+function conn_start(password, networkId) {
+  let networkParams = "wifi_connect.json?" + ssid_or_bssid(networkId);
   // Looks like we're adding the password to the URL? Yikes.
   // oh and it's port 80, so no TLS. Double yikes.
-  if (c != "") {
-    // all good as long as c is not empty. Triple yikes.
-    // let's say c == `${eval('some_malicious_code')}`
+  if (password != "") {
+    // all good as long as password is not empty. Triple yikes.
+    // let's say password == `${eval('some_malicious_code')}`
     // now we have a problem.
-    b += "&key=" + encodeURIComponent(c);
+    networkParams += "&key=" + encodeURIComponent(password);
   }
   // just POST it off to the server. What could go wrong?
   // Let me tell you what could go wrong: everything!
@@ -225,9 +237,12 @@ function conn_start(c, a) {
   // password leakage via referer headers
   // logging of URLs by intermediate proxies
   // arbitrary
-  send_async_req("POST", b, 1000, wifi_connect_resp);
+  send_async_req("POST", networkParams, 1000, wifi_connect_resp);
 }
 
+/**
+ * starts the connection routine.
+ */
 function conn_ok() {
   const id = window.scan_cur; // server-side global variable?
   try {
@@ -245,6 +260,9 @@ function conn_ok() {
   return false;
 }
 
+/**
+ * Cancel the request to connect to a network.
+ */
 function conn_cancel() {
   window.scan_cur = null; // server-side global variable?
   elem_set("status", "");
@@ -284,36 +302,47 @@ function connect(networkId) {
   }
 }
 
-function scan_connect(a) {
-  return scan_td('<button onclick="connect(' + a + ')">Connect</button>');
+/**
+ * draw a button to connect to the network in this row.
+ * @param networkId an integer that maps to a network that can be connected to.
+ */
+function scan_connect(networkId) {
+  return scan_td(
+    '<button onclick="connect(' + networkId + ')">Connect</button>'
+  );
 }
 
-function scan_line(b, a) {
-  let d = "<tr>";
-  d += scan_td(escapeHtml(a.ssid));
-  d += "<td><table id=wifi_bars><tbody><tr>";
-  for (let c = 0; c < a.bars; c++) {
-    d += "<td width=20px>&nbsp;";
+/**
+ * draws a table row for netowkrs that can be connected to.
+ */
+function scan_line(networkIdInt, network) {
+  let html = "<tr>";
+  html += scan_td(escapeHtml(network.ssid));
+  html += "<td><table id=wifi_bars><tbody><tr>";
+  for (let c = 0; c < network.bars; c++) {
+    html += "<td width=20px>&nbsp;";
   }
-  d += "</tbody></table></td>";
-  if (a.type == "Ad hoc") {
-    d += scan_td("ad-hoc");
+  html += "</tbody></table></td>";
+  if (network.type == "Ad hoc") {
+    html += scan_td("ad-hoc");
   } else {
-    if (a.type != "AP") {
-      d += scan_td("-");
+    if (network.type != "AP") {
+      html += scan_td("-");
     } else {
-      if (a.ssid == window.wifi_status.connected_ssid) {
-        d += scan_td("Connected");
+      if (network.ssid == window.wifi_status.connected_ssid) {
+        html += scan_td("Connected");
       } else {
-        d += scan_connect(b);
+        html += scan_connect(networkIdInt);
       }
-      if (a.security != "None" && a.security != "Unknown") {
-        d += scan_td('<img alt=Secure src="lock.gif" style="height:0.92em;">');
+      if (network.security != "None" && network.security != "Unknown") {
+        html += scan_td(
+          '<img alt=Secure src="lock.gif" style="height:0.92em;">'
+        );
       }
     }
   }
-  d += "</tr>";
-  return d;
+  html += "</tr>";
+  return html;
 }
 
 /** render the available wifi networks table */
