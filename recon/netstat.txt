@@ -1,0 +1,16 @@
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:42124         0.0.0.0:*               LISTEN      7645/exe            
+tcp        0      0 127.0.0.1:34517         0.0.0.0:*               LISTEN      7645/exe            
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      1147/systemd-resolv 
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      1702/cupsd          
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      1744/postgres       
+tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      1147/systemd-resolv 
+tcp        0      0 127.0.0.1:55878         0.0.0.0:*               LISTEN      7645/exe            
+tcp6       0      0 ::1:631                 :::*                    LISTEN      1702/cupsd          
+udp        0      0 0.0.0.0:60684           0.0.0.0:*                           1222/avahi-daemon:  
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           1222/avahi-daemon:  
+udp        0      0 127.0.0.54:53           0.0.0.0:*                           1147/systemd-resolv 
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           1147/systemd-resolv 
+udp6       0      0 :::5353                 :::*                                1222/avahi-daemon:  
+udp6       0      0 :::56592                :::*                                1222/avahi-daemon:  
