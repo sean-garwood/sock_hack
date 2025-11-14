@@ -1,0 +1,6 @@
+<!doctype html>
+<html><head><title>404 - Page not found</title></head><body>
+<h1>Page not found.</h1>
+<p><a href="/">Return to home page</a></p>
+</body>
+</html>
