@@ -1,0 +1,6 @@
+PORT     STATE  SERVICE
+80/tcp   open   http
+443/tcp  closed https
+8080/tcp closed http-proxy
+8443/tcp closed https-alt
+
