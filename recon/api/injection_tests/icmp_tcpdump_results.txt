@@ -1,0 +1,7 @@
+$ sudo tcpdump -i any icmp
+tcpdump: data link type LINUX_SLL2
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 262144 bytes
+15:50:51.411812 lo    In  IP localhost > _localdnsstub: ICMP localhost udp port 42569 unreachable, length 139
+15:52:01.624169 lo    In  IP localhost > _localdnsstub: ICMP localhost udp port 29681 unreachable, length 86
+15:52:01.624267 lo    In  IP localhost > _localdnsstub: ICMP localhost udp port 26498 unreachable, length 86

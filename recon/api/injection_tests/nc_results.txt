@@ -1,0 +1,2 @@
+$ nc -lvnp 4444
+Listening on 0.0.0.0 4444
