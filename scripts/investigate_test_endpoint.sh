@@ -2,7 +2,7 @@
 # Script to investigate the /test endpoint that returned HTTP 200
 
 TARGET="192.168.0.1"
-OUTPUT_DIR="recon/api"
+OUTPUT_DIR="../recon/api/test_endpoint_tests"
 
 echo "=== Investigating /test endpoint on $TARGET ==="
 echo

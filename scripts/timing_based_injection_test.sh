@@ -3,12 +3,16 @@
 # If command injection exists, sleep commands will delay the response
 
 TARGET="192.168.0.1"
+OUTPUT_DIR="../recon/api/injection_tests"
 BASELINE_SAMPLES=3
 SLEEP_DURATION=5
 
 echo "=== Timing-Based Command Injection Test ==="
 echo "Target: $TARGET"
 echo
+
+# Create output directory
+mkdir -p "$OUTPUT_DIR"
 
 # Function to measure request time
 time_request() {
@@ -122,6 +126,7 @@ done
 echo "=== Test Complete ==="
 if [ $vulnerable -eq 1 ]; then
     echo "🚨 COMMAND INJECTION VULNERABILITY DETECTED!"
+    echo "VULNERABLE" > "$OUTPUT_DIR/result.txt"
     echo
     echo "Next steps:"
     echo "1. Use successful payload for information gathering"
@@ -130,5 +135,9 @@ if [ $vulnerable -eq 1 ]; then
     echo "4. Dump firmware from /dev/mtdblock0"
 else
     echo "✓ No timing-based command injection detected"
+    echo "NOT_VULNERABLE" > "$OUTPUT_DIR/result.txt"
     echo "This doesn't rule out command injection completely - server might not process commands synchronously"
 fi
+
+echo
+echo "Results saved to $OUTPUT_DIR/"
