@@ -1,0 +1,13 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 192.168.0.1:80...
+* Connected to 192.168.0.1 (192.168.0.1) port 80
+> OPTIONS /test HTTP/1.1
+> Host: 192.168.0.1
+> User-Agent: curl/8.5.0
+> Accept: */*
+> 
+* Empty reply from server
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+* Closing connection
+curl: (52) Empty reply from server

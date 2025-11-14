@@ -13,6 +13,7 @@ Comprehensive testing of authentication headers across all known API endpoints.
 ### Test Matrix
 
 **Authentication schemes tested:**
+
 1. Bearer tokens (test, admin, root, password, 12345)
 2. Basic auth (test:test, admin:admin, root:root)
 3. Token headers
@@ -21,6 +22,7 @@ Comprehensive testing of authentication headers across all known API endpoints.
 6. Cookie-based auth
 
 **Endpoints tested:**
+
 - `/wifi_status.json`
 - `/status.json`
 - `/wifi_scan_results.json`
@@ -33,10 +35,12 @@ Comprehensive testing of authentication headers across all known API endpoints.
 ### Finding 1: wifi_status.json - State-Dependent Vulnerability
 
 **Initial test** (device with connection history):
+
 - No auth header: 1 entry
 - With `Authorization: Bearer test`: **5 entries** ✅ **VULNERABILITY CONFIRMED**
 
 **Comprehensive test** (device with cleared history):
+
 - All auth methods: 1 entry each
 - No additional data revealed
 
@@ -48,11 +52,13 @@ Comprehensive testing of authentication headers across all known API endpoints.
 ### Finding 2: status.json - Timing Only
 
 **No auth**: 325 bytes
+
 ```json
 {"DSN":"AC000W025363194",...,"mtime":887833,...}
 ```
 
 **With auth**: 325 bytes
+
 ```json
 {"DSN":"AC000W025363194",...,"mtime":887860,...}
 ```
@@ -120,6 +126,7 @@ Comprehensive testing of authentication headers across all known API endpoints.
 ### Severity Assessment
 
 **CVSS v3.1 Estimate**: 4.3 (Medium)
+
 - **Attack Vector**: Adjacent Network (AV:A) - Requires local network access
 - **Attack Complexity**: Low (AC:L) - Simple curl command
 - **Privileges Required**: None (PR:N) - No authentication needed
@@ -132,6 +139,7 @@ Comprehensive testing of authentication headers across all known API endpoints.
 ### Impact
 
 **Privacy Violation**:
+
 - Reveals WiFi networks owner attempted to connect to
 - Shows SSIDs of home, office, public networks
 - Timestamps of connection attempts
@@ -148,6 +156,7 @@ Comprehensive testing of authentication headers across all known API endpoints.
 
 **Reliably Reproducible**: Yes, but requires specific conditions
 **Conditions Required**:
+
 1. Device must have attempted multiple WiFi connections
 2. Connection history must not have been cleared
 3. Device must be in AP mode (setup mode)
@@ -234,6 +243,7 @@ SSID: cr | Error: 2 | Msg: connection timed out
 ### For Users
 
 **Workarounds** (until patched):
+
 1. **Minimize exposure**: Only use AP mode when necessary
 2. **Clear history**: Power cycle device after setup to clear history
 3. **Network isolation**: Don't allow untrusted devices on same network
@@ -300,13 +310,14 @@ recon/api/
 ### Disclosure Timeline
 
 **Recommended approach**:
+
 1. Document vulnerability thoroughly (DONE)
 2. Create PoC exploit (DONE)
 3. Contact Owlet security team
 4. Wait 90 days for patch
 5. Public disclosure if no response
 
-**Contact**: security@owletcare.com (if exists) or support@owletcare.com
+**Contact**: <security@owletcare.com> (if exists) or <support@owletcare.com>
 
 ---
 

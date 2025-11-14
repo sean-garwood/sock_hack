@@ -1,0 +1,22 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 192.168.0.1:80...
+* Connected to 192.168.0.1 (192.168.0.1) port 80
+> GET /test.xml HTTP/1.1
+> Host: 192.168.0.1
+> User-Agent: curl/8.5.0
+> Accept: */*
+> 
+< HTTP/1.1 404 Not Found
+< Content-Type: text/html
+* no chunk, no close, no size. Assume close to signal end
+< 
+{ [161 bytes data]
+100   161    0   161    0     0   1195      0 --:--:-- --:--:-- --:--:--  1201
+* Closing connection
+<!doctype html>
+<html><head><title>404 - Page not found</title></head><body>
+<h1>Page not found.</h1>
+<p><a href="/">Return to home page</a></p>
+</body>
+</html>
